@@ -15,8 +15,19 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
+  const { username, password } = req.body;
+
+  console.log({username, password});
+
+   if(username === 'user1' && password === '123456'){
+    ('username', username, {maxAge:60*1000});
+   }
+
+   //if susses
   res.renderect('/user/');
 });
+
+
 
 
 

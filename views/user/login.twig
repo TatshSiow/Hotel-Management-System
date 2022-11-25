@@ -2,5 +2,9 @@
 
 {% block body %}
   <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+  <from action="/user/login" methon="post">
+    <input type="text name="username">
+    <input type="password" name="password">
+    <button type="submit">login</botton>
+  </from>
 {% endblock %}
