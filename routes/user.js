@@ -1,34 +1,31 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('user/index',{title:'會員中心'});
+  res.render('user/index', { title: '會員中心' });
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('user/login',{title:'登入'});
+  res.render('user/login', { title: '登入' });
 });
 
 router.get('/logout', function(req, res, next) {
-  res.renderect('/user/');
+  res.clearCookie('username');
+  res.redirect('/user/');
 });
 
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
   const { username, password } = req.body;
 
-  console.log({username, password});
+  console.log({ username, password });
 
-   if(username === 'user1' && password === '123456'){
-    ('username', username, {maxAge:60*1000});
-   }
+  if (username === 'user1' && password === '123456') {
+    res.cookie('username', username);
+  }
 
-   //if susses
-  res.renderect('/user/');
+  // if success
+  res.redirect('/user/');
 });
-
-
-
 
 
 module.exports = router;
