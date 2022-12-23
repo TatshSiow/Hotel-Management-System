@@ -1,6 +1,7 @@
 var express = require('express');
 var { promisePool: mysql } = require('../lib/mysql');
 var router = express.Router();
+
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
 
@@ -20,11 +21,12 @@ router.get('/fetch', async function(req, res, next) {
 });
 
 router.post('/submit', async function(req, res, next) {
-@@ -16,7 +26,17 @@ router.post('/submit', async function(req, res, next) {
-
-    const [rows,fields] = await mysql.execute('INSERT INTO `message` (user_id, message, create_at) VALUES (?, ?, NOW())', [userId, message]);
+  const { user, userId } = req.signedCookies;
+    const { message } = req.body;
     
-   if(rows.affectedRows !== 1) {
+    const [rows,fields] = await mysql.execute('INSERT INTO `message` (user_id, message, create_at) VALUES (?, ?, NOW())', [userId, message]);
+
+    if(rows.affectedRows !== 1) {
         return res.status(200).json({
           'status': false,
           'message': '失敗',
