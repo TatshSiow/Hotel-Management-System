@@ -2,6 +2,15 @@
 
 {% block body %}
   <h1>{{title}}</h1>
-  <a href="/user/login">登入</a>
+  {% if (error) %}
+  <p>username or password fail</p>
+  {% endif %}
+
+  {% if (user) %}
+  <p>歡迎 {{user}} 登入</p>
   <a href="/user/logout">登出</a>
+  {% else %}
+  <a href="/user/login">登入</a>
+  <a href="/user/register">註冊</a>
+  {% endif %}
 {% endblock %}
