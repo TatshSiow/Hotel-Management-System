@@ -4,9 +4,37 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
 
-  const [rows,fields] = await mysql.execute('SELECT `message`.`message`,`message`.`create_at`, `user`.`username` FROM `message` INNER JOIN `user` ON message.user_id = user.id');
-
-  return res.render('message/index', { title: 'Express', user, rows });
+  return res.render('message/index', { title: 'Express', user });
 });
 
+router.get('/fetch', async function(req, res, next) {
+    const [rows,fields] = await mysql.execute(
+        'SELECT `message`.`message`,`message`.`create_at`, `user`.`username` '+
+        'FROM `message` INNER JOIN `user` ON message.user_id = user.id ' +
+        'ORDER BY `message`.id DESC');
+    
+    return res.status(200).json({
+        'status': true,
+        'data': rows,
+    });
+});
+
+router.post('/submit', async function(req, res, next) {
+@@ -16,7 +26,17 @@ router.post('/submit', async function(req, res, next) {
+
+    const [rows,fields] = await mysql.execute('INSERT INTO `message` (user_id, message, create_at) VALUES (?, ?, NOW())', [userId, message]);
+    
+   if(rows.affectedRows !== 1) {
+        return res.status(200).json({
+          'status': false,
+          'message': '失敗',
+        });
+    }
+
+    return res.status(200).json({
+        'status': true,
+        'message': '成功',
+    });
+});
+  
 module.exports = router;

@@ -1,17 +1,39 @@
+
 {% extends 'layout.twig' %}
+
 {% block body %}
   <h1>留言板頁面</h1>
-  <div>
-    {% for row in rows %}
+
     <div class="card">
         <div class="card-header">
-            {{row['create_at']}}
+            新增留言
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{row['username']}}</h5>
-            <p class="card-text">{{row['message']}}</p>
+            <form action="/message/submit" method="post">
+                <div class="mb-3">
+                    <label for="message" class="form-label">留言內容</label>
+                    <input type="text" class="form-control" id="message" name="message">
+                </div>
+                <button type="submit" class="btn btn-primary">送出</button>
+            </form>
         </div>
     </div>
-    {% endfor %}
-  <div>
+
+
+    <div>
+
+            <div class="card">
+            <div class="card-header">
+
+
+            create_at
+            </div>
+            <div class="card-body">
+
+                <h5 class="card-title">username</h5>
+                <p class="card-text">message</p>
+            </div>
+        </div>
+    
+    <div>
 {% endblock %}
