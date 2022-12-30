@@ -22,7 +22,13 @@
       </div>
     </div>
     <div class="col-sm-9">
-      功能內頁
+      <form action="/user/recharge" method="post">
+        <div class="mb-3">
+            <label for="code" class="form-label">請輸入序號</label>
+            <input type="text" class="form-control" id="code" name="code">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     </div>
   </div>
 {% endblock %}

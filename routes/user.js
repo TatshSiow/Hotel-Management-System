@@ -7,11 +7,12 @@ router.get('/', function(req, res, next) {
   const { user } = req.signedCookies;
   const { error } = req.query;
 
-  res.render('user/index', { title: '會員中心', user, error });
+  return res.render('user/index', { title: '會員中心', user, error });
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('user/login', { title: '登入' });
+
+  return res.render('user/login', { title: '登入' });
 });
 
 router.get('/logout', function(req, res, next) {
@@ -36,7 +37,6 @@ router.post('/login', async function(req, res, next) {
   }
 
   const user = rows[0];
-
   if (!await argon2.verify(user.password, password)) {
     return res.status(200).json({
       'status': false,
@@ -60,10 +60,10 @@ router.get('/register', function(req, res, next) {
 router.post('/register', async function(req, res, next) {
   const { username, password, name } = req.body;
   const hashedPassowrd = await argon2.hash(password);
+  
+  const [rows,fields] = await mysql.execute('INSERT INTO `user` (username, password, name, amount) VALUES (?, ?, ?, ?)', [username, hashedPassowrd, name, 500]);
 
-  const [rows,fields] = await mysql.execute('INSERT INTO `user` (username, password, name) VALUES (?, ?, ?)', [username, hashedPassowrd, name]);
-
-  if(rows !== 1) {
+  if(rows.affectedRows !== 1) {
     return res.status(200).json({
       'status': false,
       'message': '註冊失敗',
@@ -75,5 +75,88 @@ router.post('/register', async function(req, res, next) {
     'message': '成功',
   });
 });
+
+router.get('/recharge', function(req, res, next) {
+  const { user } = req.signedCookies;
+  return res.status(200).render('user/recharge', { user, title: '儲值' });
+});
+
+router.post('/recharge', async function(req, res, next) {
+  const { code } = req.body;
+  const { userId } = req.signedCookies;
+
+  const [updateCardRows, updateCardFields] = await mysql.execute('UPDATE `card` SET `status` = 1 WHERE code = ? AND status = 0', [code]);
+
+  if(updateCardRows.affectedRows !== 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '序號有錯',
+    });
+  }
+
+  const [selectCardRows, selectCardFields] = await mysql.execute('SELECT id, amount FROM `card` WHERE code = ?', [code]);
+
+  if (selectCardRows.length != 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '有奇怪事情發生',
+    });
+  }
+
+  const card = selectCardRows[0];
+  const amount = card.amount;
+  const cardId = card.id;
+
+  const [insertCardUseRows, insertCardUseFields] = await mysql.execute(
+    'INSERT INTO `card_use` (`user_id`, `card_id`, create_at) VALUE (?, ?, NOW())', 
+    [userId, cardId]
+  );
+  
+  if (insertCardUseRows.affectedRows != 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '寫入卡片記錄失敗',
+    });
+  }
+
+  const [selectUserRows, selectUserFields] = await mysql.execute('SELECT amount FROM `user` WHERE id = ?', [userId]);
+  
+  if (selectUserRows.length != 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '找不到使用者',
+    });
+  }
+
+  const user = selectUserRows[0];
+  const userOriginAmount = user.amount;
+
+  const [updateUserRows, updateUserFields] = await mysql.execute('UPDATE `user` SET `amount` = `amount` + ? WHERE id = ?', [amount, userId]);
+
+  if (updateUserRows.affectedRows != 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '更新使用者金額失敗',
+    });
+  }
+
+  const [insertUserAmountLogRows, insertUserAmountLogFields] = await mysql.execute(
+    'INSERT INTO `user_amount_log` (`user_id`, amount, origin_amount, create_at) VALUE (?, ?, ?, NOW())', 
+    [userId, amount, userOriginAmount]
+  );
+
+  if (insertUserAmountLogRows.affectedRows != 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '寫入使用者紀錄失敗',
+    });
+  }
+
+  return res.status(200).json({
+    'status': true,
+    'message': '成功',
+  });
+});
+
 
 module.exports = router;
