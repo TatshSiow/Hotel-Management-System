@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `card`;
 CREATE TABLE IF NOT EXISTS `card` (
-  `id` int(11) NOT NULL
+  `code` varchar(11) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,8 +72,32 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- 傾印資料表的資料 `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `name`, `amount`) VALUES
+(1, '123', '$argon2id$v=19$m=65536,t=3,p=4$pikvyQmp7mMJ/pTcDL4yMw$5oOJCTeIiAVXyyYCm0yDiYTarIPPAJCjOHulWGQ8Xxg', '123', 500);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `user_amount_log`
+--
+
+DROP TABLE IF EXISTS `user_amount_log`;
+CREATE TABLE IF NOT EXISTS `user_amount_log` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `origin_amount` int(11) NOT NULL,
+  `create_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
