@@ -45,7 +45,8 @@ router.post('/login', async function(req, res, next) {
   }
 
   res.cookie('user', user.name, {signed: true});
-
+  res.cookie('userId', user.id, {signed: true});
+  
   return res.status(200).json({
     'status': true,
     'message': '成功',

@@ -1,4 +1,3 @@
-
 {% extends 'layout.twig' %}
 
 {% block body %}
@@ -9,31 +8,17 @@
             新增留言
         </div>
         <div class="card-body">
-            <form action="/message/submit" method="post">
+            <form>
                 <div class="mb-3">
                     <label for="message" class="form-label">留言內容</label>
                     <input type="text" class="form-control" id="message" name="message">
                 </div>
-                <button type="submit" class="btn btn-primary">送出</button>
+                <button type="button" id="submit-message" class="btn btn-primary">送出</button>
             </form>
         </div>
     </div>
 
 
-    <div>
-
-            <div class="card">
-            <div class="card-header">
-
-
-            create_at
-            </div>
-            <div class="card-body">
-
-                <h5 class="card-title">username</h5>
-                <p class="card-text">message</p>
-            </div>
-        </div>
-    
-    <div>
+    <div id="message-list"><div>
+    <script src="/javascript/message.js"></script>
 {% endblock %}

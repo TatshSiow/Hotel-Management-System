@@ -21,9 +21,9 @@ router.get('/fetch', async function(req, res, next) {
 });
 
 router.post('/submit', async function(req, res, next) {
-  const { user, userId } = req.signedCookies;
+    const { user, userId } = req.signedCookies;
     const { message } = req.body;
-    
+
     const [rows,fields] = await mysql.execute('INSERT INTO `message` (user_id, message, create_at) VALUES (?, ?, NOW())', [userId, message]);
 
     if(rows.affectedRows !== 1) {
