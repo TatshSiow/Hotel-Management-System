@@ -156,4 +156,13 @@ router.post('/recharge', async function(req, res, next) {
 });
 
 
+router.get('/amount_log', async function(req, res, next) {
+  const { user, userId } = req.signedCookies;
+
+  const [rows,fields] = await mysql.execute('SELECT* FROM `user_amount_log` WHERE user_id = ? ORDER BY id DESC', [userId]);
+
+  return res.status(200).render('user/amount_log', { user, title: '金額紀錄', rows });
+});
+
+
 module.exports = router;

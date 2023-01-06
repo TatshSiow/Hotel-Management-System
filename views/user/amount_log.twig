@@ -22,7 +22,26 @@
       </div>
     </div>
     <div class="col-sm-9">
-      功能內頁
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>金額</th>
+                    <th>原始金額</th>
+                    <th>時間</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{row['id']}}</td>
+                    <td>{{row['amount']}}</td>
+                    <td>{{row['origin_amount']}}</td>
+                    <td>{{row['create_at']}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
   </div>
 {% endblock %}
