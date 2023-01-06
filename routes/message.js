@@ -36,7 +36,6 @@ router.post('/submit', async function(req, res, next) {
     return res.status(200).json({
         'status': true,
         'message': '成功',
-        
     });
 });
   
