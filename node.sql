@@ -30,9 +30,14 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `card`;
 CREATE TABLE IF NOT EXISTS `card` (
-  `code` varchar(11) NOT NULL,
-  `status` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` int(10) UNSIGNED NOT NULL,
+  `create_at` datetime NOT NULL,
+  `status` int(11) NOT NULL COMMENT '0:未使用,1使用過',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -47,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `card_use` (
   `card_id` int(11) NOT NULL,
   `create_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -57,8 +62,20 @@ CREATE TABLE IF NOT EXISTS `card_use` (
 
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
-  `1` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `message`
+--
+
+INSERT INTO `message` (`id`, `user_id`, `message`, `create_at`) VALUES
+(1, 1, 'zzz', '2022-12-30 13:33:30'),
+(2, 1, 'ffff', '2022-12-30 13:38:09');
 
 -- --------------------------------------------------------
 
@@ -69,20 +86,20 @@ CREATE TABLE IF NOT EXISTS `message` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `amount`) VALUES
-(1, '123', '$argon2id$v=19$m=65536,t=3,p=4$pikvyQmp7mMJ/pTcDL4yMw$5oOJCTeIiAVXyyYCm0yDiYTarIPPAJCjOHulWGQ8Xxg', '123', 500);
+(1, 'test', '$argon2id$v=19$m=65536,t=3,p=4$mlOwYdvsbD1zXmko4v3t8g$KYrHu6OhLNvLULvwIaIGYkY7x/YzwUfUv2oD/pqH7RQ', 'test', 0);
 
 -- --------------------------------------------------------
 
@@ -92,13 +109,13 @@ INSERT INTO `user` (`id`, `username`, `password`, `name`, `amount`) VALUES
 
 DROP TABLE IF EXISTS `user_amount_log`;
 CREATE TABLE IF NOT EXISTS `user_amount_log` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `origin_amount` int(11) NOT NULL,
   `create_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
