@@ -24,20 +24,21 @@
     <div class="col-sm-9">
         <table class="table">
             <thead>
+              為您推薦【購物清單畫面】
                 <tr>
-                    <th>筆數ID</th>
-                    <th>消費、儲值金額</th>
-                    <th>原始累計金額</th>
-                    <th>交易完成時間</th>
+                    <th>序號</th>
+                    <th>物品代碼</th>
+                    <th>數量</th>
+                    <th>價錢</th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in rows %}
                 <tr>
                     <td>{{row['id']}}</td>
-                    <td>{{row['amount']}}</td>
-                    <td>{{row['origin_amount']}}</td>
-                    <td>{{row['create_at']}}</td>
+                    <td>{{row['itemcode']}}</td>
+                    <td>{{row['quantity']}}</td>
+                    <td>{{row['price']}}</td>
                 </tr>
                 {% endfor %}
             </tbody>

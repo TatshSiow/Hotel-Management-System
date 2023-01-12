@@ -164,5 +164,14 @@ router.get('/amount_log', async function(req, res, next) {
   return res.status(200).render('user/amount_log', { user, title: '金額紀錄', rows });
 });
 
+router.get('/itemlist', async function(req, res, next) {
+  const [rows,fields] = await mysql.execute('SELECT* FROM `itemlist` ORDER BY id DESC',[ID, ItemCode, Quantity, Price]);
+  return res.status(200).render('itemlist', { user, title: '物件資料', rows });
+
+  const ID = itemlist.id;
+  const ItemCode = itemlist.itemcode;
+  const Quantity = itemlist.quantity;
+  const Price = itemlist.price;
+});
 
 module.exports = router;
