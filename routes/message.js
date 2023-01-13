@@ -24,7 +24,7 @@ router.post('/submit', async function(req, res, next) {
     const { userId } = req.signedCookies;
     const { message } = req.body;
 
-    const messagePrice = 500;
+    const messagePrice = 1;
 
   const connection = await mysql.getConnection();
 

@@ -10,7 +10,7 @@
       <div class="list-group">
         {% if (user) %}
         <a href="/user" class="list-group-item list-group-item-action active" aria-current="true">
-          歡迎 {{user}} 登入
+          歡迎使用者 {{user}} 登入
         </a>
         <a href="/user/recharge" class="list-group-item list-group-item-action">儲值</a>
         <a href="/user/amount_log" class="list-group-item list-group-item-action">金額紀錄</a>
@@ -41,8 +41,38 @@
                     <td>{{row['price']}}</td>
                 </tr>
                 {% endfor %}
+                <tr>
+                    <td>測試文字1</td>
+                    <td>測試文字1</td>
+                    <td>測試文字1</td>
+                    <td>測試文字1</td>
+                </tr>
+                <tr>
+                    <td>測試文字2</td>
+                    <td>測試文字2</td>
+                    <td>測試文字2</td>
+                    <td>測試文字2</td>
+                </tr>
+                <tr>
+                    <td>測試文字3</td>
+                    <td>測試文字3</td>
+                    <td>測試文字3</td>
+                    <td>測試文字3</td>
+                </tr>
             </tbody>
         </table>
+        <div class="col-md-12 text-center">
+        <hr/>
+            <button type="button" class="btn btn-primary" disabled ><</button>
+            <button type="button" class="btn btn-outline-primary" disabled >1</button>
+            <button type="button" class="btn btn-outline-primary" disabled >2</button>
+            <button type="button" class="btn btn-outline-primary" disabled >3</button>
+            <button type="button" class="btn btn-outline-primary" disabled >4</button>
+            <button type="button" class="btn btn-outline-primary" disabled >5</button>
+            <button type="button" class="btn btn-outline-primary" disabled >6</button>
+            <button type="button" class="btn btn-primary" disabled>></button>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}

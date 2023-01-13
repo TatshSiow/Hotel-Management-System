@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
 
-  return res.render('itemlist.twig', { title: 'Express', user });
+  return res.render('views/itemlist', { title: 'Express', user });
 });
 
 router.get('/fetch', async function(req, res, next) {

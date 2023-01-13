@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const { user } = req.signedCookies;
-  res.render('index', { title: 'Express', user });
+  res.render('index', { title: '超無聊購物車首頁', user });
 });
 
 module.exports = router;
