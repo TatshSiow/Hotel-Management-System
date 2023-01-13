@@ -165,13 +165,18 @@ router.get('/amount_log', async function(req, res, next) {
 });
 
 router.get('/itemlist', async function(req, res, next) {
-  const [rows,fields] = await mysql.execute('SELECT* FROM `itemlist` ORDER BY id DESC',[ID, ItemCode, Quantity, Price]);
-  return res.status(200).render('itemlist', { user, title: '物件資料', rows });
+  const [rows, fields] = await mysql.execute('SELECT id, itemcode, quantity, price FROM `itemlist` ORDER BY id DESC');
+  
+  const itemlist = rows.map(row => {
+    return {
+      id: row.id,
+      itemcode: row.itemcode,
+      quantity: row.quantity,
+      price: row.price
+    };
+  });
 
-  const ID = itemlist.id;
-  const ItemCode = itemlist.itemcode;
-  const Quantity = itemlist.quantity;
-  const Price = itemlist.price;
+  return res.status(200).render('itemlist', { user, title: '物件資料', itemlist: itemlist });
 });
 
 module.exports = router;
