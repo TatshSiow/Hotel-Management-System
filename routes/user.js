@@ -164,7 +164,7 @@ router.get('/amount_log', async function(req, res, next) {
   return res.status(200).render('user/amount_log', { user, title: '金額紀錄', rows });
 });
 
-router.get('/itemlist', async function(req, res, next) {
+/*router.get('/itemlist', async function(req, res, next) {
   const [rows, fields] = await mysql.execute('SELECT id, itemcode, quantity, price FROM `itemlist` ORDER BY id DESC');
   
   const itemlist = rows.map(row => {
@@ -174,9 +174,18 @@ router.get('/itemlist', async function(req, res, next) {
       quantity: row.quantity,
       price: row.price
     };
-  });
+  });*/
+router.get('/fetch', async function(req, res, next) {
+  
+    const [rows, fields] = await mysql.execute(
+      'SELECT `id`, `itemcode`, `quantity`, `price` FROM `itemlist` ORDER BY `itemlist` .id DESC'
+    );
+  
+    return res.status(200).render('itemlist', { user, title: '物件資料', itemlist: itemlist });
+    });
 
-  return res.status(200).render('itemlist', { user, title: '物件資料', itemlist: itemlist });
-});
+
+  
+
 
 module.exports = router;
