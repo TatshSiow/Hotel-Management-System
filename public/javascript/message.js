@@ -1,3 +1,4 @@
+//message刷新，然後用GET來取得資料，async操作的情況下等待回傳值
 const reloadMessage = async () => {
     const response = await fetch('/message/fetch', {
         method: 'GET'
@@ -5,9 +6,11 @@ const reloadMessage = async () => {
         return await res.json();
     });
 
-    let messageList = '';
+    //清空messageList
+    let messageList = ''; 
 
-    for (let i = 0; i < response.data.length ; i++) {
+    //for迴圈，在每次回圈中，從node資料庫裡面得到資料（response.data=回應資料，[i]=筆數，其餘的是SQL內資料的欄位）
+    for (let i = 0; i < response.data.length ; i++) { 
         messageList += `
         <div class="card">
             <div class="card-header">
