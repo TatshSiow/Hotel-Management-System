@@ -1,0 +1,4 @@
+{public} 別人往你網頁要求資料
+{routes} 後端往資料庫
+{views} 顯示的網頁
+app.js 軟件的架構
