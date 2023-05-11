@@ -3,11 +3,11 @@
 var express = require('express');
 var router = express.Router();
 
-/*GET主目錄的index*/
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
-  res.render('index', { title: '大樓管理', user });
+  return res.render('index', {user, title: '大樓管理'});
 });
+
 
 //將模組匯出到router
 module.exports = router;

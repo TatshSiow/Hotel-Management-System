@@ -1,9 +1,27 @@
 {% extends 'layout.twig' %}
   <h1>aa</h1>
-<body>
 {% block body %}
-    <div id="itemlist-list"><div>
-    <script src="/javascript/itemlist.js"></script>
+    <div class="col-sm-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ITEMCODE</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{row['id']}}</td>
+                    <td>{{row['itemcode']}}</td>
+                    <td>{{row['price']}}</td>
+                    <td>{{row['quantity']}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="itemlist"><div>
 {% endblock %}
-</body>
-```
