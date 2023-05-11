@@ -1,4 +1,3 @@
-/*
 var express = require('express');
 var { promisePool: mysql } = require('../lib/mysql');
 var router = express.Router();
@@ -16,4 +15,3 @@ router.get('/fetch', async function(req, res, next) {
 });
 
 module.exports = router;
-*/

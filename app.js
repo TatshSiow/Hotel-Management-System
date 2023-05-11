@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/message', messageRouter);
+app.use('/itemlist', itemlistRouter);
 
 // 抓取404錯誤（找不到網頁） 並回傳到error handler（錯誤中心）
 app.use(function(req, res, next) {
