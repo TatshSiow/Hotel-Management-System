@@ -23,15 +23,10 @@ router.get('/login', function(req, res, next) {
   return res.render('user/login', { title: '登入' });
 });
 
-//如果router讀取到用戶點擊logout，則會把用戶導到user/logout，並且清除cookies
+//如果router讀取到用戶點擊logout，則會把用戶導到index，並且清除cookies
 router.get('/logout', function(req, res, next) {
   res.clearCookie('user');
-
-//如果登出成功將會顯示一下字眼，200是指回傳值正確
-  return res.status(200).json({
-    'status': true,
-    'message': '成功',
-  });
+  return res.render('index', { title: '大樓管理' });
 });
 
 /*router用POST方式取得login網頁
