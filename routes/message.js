@@ -15,9 +15,7 @@ router.get('/', async function(req, res, next) {
 //從router取得資料並暫存在/fetch，在SQL中下達以下指令
 router.get('/fetch', async function(req, res, next) {
     const [rows,fields] = await mysql.execute(
-        'SELECT `message`.`message`,`message`.`create_at`, `user`.`username` '+
-        'FROM `message` INNER JOIN `user` ON message.user_id = user.id ' +
-        'ORDER BY `message`.id DESC');
+        'SELECT * ORDER BY `repair`.id DESC');
 
 //如果回傳值正確，則在rows中顯示資料    
     return res.status(200).json({

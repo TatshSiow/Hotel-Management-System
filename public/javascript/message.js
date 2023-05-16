@@ -14,11 +14,12 @@ const reloadMessage = async () => {
         messageList += `
         <div class="card">
             <div class="card-header">
-                ${response.data[i].create_at}
+                ${response.data[i].reportdate}
             </div>
             <div class="card-body">
-                <h5 class="card-title">${response.data[i].username}</h5>
-                <p class="card-text">${response.data[i].message}</p>
+                <h5 class="card-title">${response.data[i].room}</h5>
+                <p class="card-text">${response.data[i].device}</p>
+                <p class="card-text">${response.data[i].problem}</p>
             </div>
         </div>`;
     }
