@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1:3306
--- 產生時間： 2023 年 05 月 11 日 08:45
--- 伺服器版本： 8.0.31
--- PHP 版本： 8.0.26
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 16, 2023 at 12:42 PM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `node`
+-- Database: `node`
 --
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `itemlist`
+-- Table structure for table `itemlist`
 --
 
 DROP TABLE IF EXISTS `itemlist`;
@@ -32,11 +32,12 @@ CREATE TABLE IF NOT EXISTS `itemlist` (
   `id` int NOT NULL,
   `itemcode` varchar(5) NOT NULL,
   `quantity` int NOT NULL,
-  `price` int NOT NULL
+  `price` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- 傾印資料表的資料 `itemlist`
+-- Dumping data for table `itemlist`
 --
 
 INSERT INTO `itemlist` (`id`, `itemcode`, `quantity`, `price`) VALUES
@@ -46,7 +47,7 @@ INSERT INTO `itemlist` (`id`, `itemcode`, `quantity`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `message`
+-- Table structure for table `message`
 --
 
 DROP TABLE IF EXISTS `message`;
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- 傾印資料表的資料 `message`
+-- Dumping data for table `message`
 --
 
 INSERT INTO `message` (`id`, `user_id`, `message`, `create_at`) VALUES
@@ -69,7 +70,30 @@ INSERT INTO `message` (`id`, `user_id`, `message`, `create_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `user`
+-- Table structure for table `repair`
+--
+
+DROP TABLE IF EXISTS `repair`;
+CREATE TABLE IF NOT EXISTS `repair` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `ROOM` varchar(50) NOT NULL,
+  `REPORTDATE` date NOT NULL,
+  `DEVICE` varchar(50) NOT NULL,
+  `PROBLEM` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `repair`
+--
+
+INSERT INTO `repair` (`ID`, `ROOM`, `REPORTDATE`, `DEVICE`, `PROBLEM`) VALUES
+(1, '505', '2023-05-16', '冷氣機', '沒辦法開啟');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -84,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- 傾印資料表的資料 `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `amount`) VALUES
