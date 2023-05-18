@@ -1,23 +1,32 @@
 {% extends 'layout.twig' %}
 {% block body %}
   <h1>報修中心</h1>
+        <div class="d-flex justify-content-start w-100">
+            <div class="card col-md-4 w-100" style="width: 50%;">
+                <div class="card-header">報修</div>
+                
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+        
+                            <label for="message" class="form-label">房號：</label>
+                            <input type="text" class="form-control" id="message" name="message">
+                            <br>
 
-    <div class="card">
-        <div class="card-header">
-            報修
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="mb-3">
-                    <label for="message" class="form-label">內容：</label>
-                    <input type="text" class="form-control" id="message" name="message">
+                            <label for="message" class="form-label">故障設備：</label>
+                            <input type="text" class="form-control" id="message" name="message">
+                            <br>
+
+                            <label for="message" class="form-label">故障情況：</label>
+                            <input type="text" class="form-control" id="message" name="message">
+                            <br>
+        
+                            <button type="button" id="submit-message" class="btn btn-primary">回報</button>
+                        </div>
+                    </form>
                 </div>
-                <button type="button" id="submit-message" class="btn btn-primary">發佈</button>
-            </form>
+            </div>
         </div>
-    </div>
-
-
     <div id="message-list"><div>
     <script src="/javascript/message.js"></script>
 {% endblock %}
