@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 16, 2023 at 12:42 PM
+-- Generation Time: May 19, 2023 at 09:14 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -43,29 +43,6 @@ CREATE TABLE IF NOT EXISTS `itemlist` (
 INSERT INTO `itemlist` (`id`, `itemcode`, `quantity`, `price`) VALUES
 (1, '12', 123, 1234),
 (2, '123', 1412, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `message`
---
-
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE IF NOT EXISTS `message` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `create_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`id`, `user_id`, `message`, `create_at`) VALUES
-(1, 1, 'zzz', '2022-12-30 13:33:30'),
-(2, 1, 'ffff', '2022-12-30 13:38:09');
 
 -- --------------------------------------------------------
 

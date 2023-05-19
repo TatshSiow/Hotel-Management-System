@@ -31,3 +31,26 @@ headers=標頭，'content-type': 'application/json'這行是代表使用json內�
 
 //添加login的指令，eventListener是待命操作（click是用戶操作，login是系統動作）
 document.getElementById('login').addEventListener('click', login);
+
+// Get the login button
+var loginButton = document.getElementById("login");
+
+// Add a click event listener to the login button
+loginButton.addEventListener("click", login);
+
+// Get the input field
+var input = document.getElementById("login-input");
+
+// Execute a function when the user presses the enter key
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Call the login function
+    login();
+  }
+});
+
+// The login function
+function login() {
+  // Your login code here
+}

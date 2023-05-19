@@ -8,17 +8,22 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-        
-                            <label for="message" class="form-label">房號：</label>
-                            <input type="text" class="form-control" id="message" name="message">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="message" name="message" placeholder="message">
+                                <label for="message" class="form-label">房號</label>
+                            </div>
                             <br>
 
-                            <label for="message" class="form-label">故障設備：</label>
-                            <input type="text" class="form-control" id="message" name="message">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="message" name="message" placeholder="message">
+                                <label for="message" class="form-label">故障設備</label>
+                            </div>
                             <br>
 
-                            <label for="message" class="form-label">故障情況：</label>
-                            <input type="text" class="form-control" id="message" name="message">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="message" name="message" placeholder="message">
+                                <label for="message" class="form-label">故障情況</label>
+                            </div>
                             <br>
         
                             <button type="button" id="submit-message" class="btn btn-primary">回報</button>
