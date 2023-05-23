@@ -26,3 +26,35 @@ const submitItemlist = async () => {
 
 //刷新itemlist
 reloaditemlist();
+
+const edit_itemlist = document.querySelectorAll('[id^="edit-itemlist-"]');
+editBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const id = btn.id.split('-')[2];
+    // 导航到包含编辑表单的页面，例如：
+    window.location.href = `edit-itemlist.html?id=${id}`;
+  });
+});
+
+const editForm = document.getElementById('edit-form');
+editForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const id = document.getElementById('id').value;
+  const itemcode = document.getElementById('itemcode').value;
+  const price = document.getElementById('price').value;
+  const quantity = document.getElementById('quantity').value;
+  const response = await fetch(`itemlist/edit?id=${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ itemcode, price, quantity })
+  }).then(async (res) => {
+    return await res.json();
+  });
+  if (response.status) {
+    window.location.href = 'itemlist.html';
+  } else {
+    alert(response.itemlist);
+  }
+});
