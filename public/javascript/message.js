@@ -15,12 +15,13 @@ const reloadMessage = async () => {
         <br>
         <div class="card">
             <div class="card-header">
-                ${response.data[i].reportdate}
+                ${response.data[i].ID}
             </div>
             <div class="card-body">
-                <h5 class="card-title">${response.data[i].room}</h5>
-                <p class="card-text">${response.data[i].device}</p>
-                <p class="card-text">${response.data[i].problem}</p>
+                <h5 class="card-text">${response.data[i].ROOM}</h5>
+                <p class="card-text">${response.data[i].REPORTDATE}</p>
+                <p class="card-text">${response.data[i].DEVICE}</p>
+                <p class="card-text">${response.data[i].PROBLEM}</p>
             </div>
         </div>`;
     }
@@ -30,8 +31,12 @@ const reloadMessage = async () => {
 
 //如果我在頁面點了submit按鈕，我的資料會回傳到資料庫
 const submitMessage = async () => {
-  const message = document.getElementById('message').value;
-  document.getElementById('message').value = '';
+  document.getElementById('ROOM,REPORTDATE,DEVICE,PROBLEM').value = '';
+  const ROOM = document.getElementById('ROOM').value;
+  const REPORTDATE = document.getElementById('REPORTDATE').value;
+  const DEVICE = document.getElementById('DEVICE').value;
+  const PROBLEM = document.getElementById('PROBLEM').value;
+ 
 
 /* 向 /message/submit 發送 POST 請求
 將 message 轉換成 string
@@ -42,11 +47,12 @@ fetch 用來發送網路請求的函式，
 設定 content-type 為 application/json，表示請求的內容是 JSON 格式。*/
   const response = await fetch('/message/submit', {
     method: 'POST',
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({ ROOM,REPORTDATE,DEVICE,PROBLEM }),
     headers: {
       'content-type': 'application/json',
     },
-  }).then(async (res) => {
+  })
+  .then(async (res) => {
     return await res.json();
   });
 
