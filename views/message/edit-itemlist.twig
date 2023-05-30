@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+{% block body %}
+	
+<form id="edit-form">
+  <input type="hidden" id="id" name="id">
+  <div class="form-group">
+    <label for="itemcode">房號:</label>
+    <input type="text" class="form-control" id="itemcode" name="itemcode">
+  </div>
+  <div class="form-group">
+    <label for="price">名字:</label>
+    <input type="text" class="form-control" id="price" name="price">
+  </div>
+  <div class="form-group">
+    <label for="quantity">聯絡:</label>
+    <input type="text" class="form-control" id="quantity" name="quantity">
+  </div>
+  <button type="submit" class="btn btn-primary">保存</button>
+</form>
+
+{% endblock %}
+
+
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+const response = await fetch(`itemlist/fetch?id=${id}`, {
+  method: 'GET'
+}).then(async (res) => {
+  return await res.json();
+});
+
+// 将数据填充到表单中，例如：
+document.getElementById('itemcode').value = response.itemcode;
+document.getElementById('price').value = response.price;
+document.getElementById('quantity').value = response.quantity;
+</script>
