@@ -18,7 +18,7 @@ const reloadMessage = async () => {
                 ${response.data[i].ID}
             </div>
             <div class="card-body">
-                <h5 class="card-text">${response.data[i].ROOM}</h5>
+                <p class="card-text">${response.data[i].ROOM}</p>
                 <p class="card-text">${response.data[i].REPORTDATE}</p>
                 <p class="card-text">${response.data[i].DEVICE}</p>
                 <p class="card-text">${response.data[i].PROBLEM}</p>
@@ -31,7 +31,6 @@ const reloadMessage = async () => {
 
 //如果我在頁面點了submit按鈕，我的資料會回傳到資料庫
 const submitMessage = async () => {
-  document.getElementById('ROOM,REPORTDATE,DEVICE,PROBLEM').value = '';
   const ROOM = document.getElementById('ROOM').value;
   const REPORTDATE = document.getElementById('REPORTDATE').value;
   const DEVICE = document.getElementById('DEVICE').value;
