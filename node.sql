@@ -76,7 +76,7 @@ INSERT INTO `repair` (`ID`, `ROOM`, `REPORTDATE`, `DEVICE`, `PROBLEM`) VALUES
 DROP TABLE IF EXISTS `visitors`;
 CREATE TABLE IF NOT EXISTS `visitors` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `VTDATE` date NOT NULL,
+  `VDATE` date NOT NULL,
   `VNAME` varchar(50) NOT NULL,
   `IDCARD` varchar(255) NOT NULL,
   `VROOM` varchar(50) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `visitors` (
 -- Dumping data for table `repair`
 --
 
-INSERT INTO `visitors` (`ID`, `VTDATE`, `NAME`, `IDCARD`, `VROOM`) VALUES
+INSERT INTO `visitors` (`ID`, `VDATE`, `VNAME`, `IDCARD`, `VROOM`) VALUES
 (1,'2023-05-16','廖北','h141093093', '505');
 
 -- --------------------------------------------------------

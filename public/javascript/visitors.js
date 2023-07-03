@@ -1,4 +1,4 @@
-const Visitors = async () => {
+const reloadVisitors = async () => {
     const response = await fetch('/visitors/fetch', {
         method: 'GET'
     }).then(async (res) => {

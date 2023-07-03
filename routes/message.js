@@ -31,7 +31,8 @@ router.post('/submit', async function(req, res, next) {
  
 
   // 使用 mysql.getConnection 获取数据库连接，并将其赋值给 connection 变量
- 
+  const connection = await mysql.getConnection();
+  try {
 
  
   const { ROOM } = req.body;
@@ -73,7 +74,7 @@ router.post('/submit', async function(req, res, next) {
     } catch (e) {
         await connection.rollback();
         return res.status(500).json({
-        'status': flase,
+        'status': false,
         'message': e.message,
         });
     }
@@ -82,6 +83,7 @@ router.post('/submit', async function(req, res, next) {
         'status': true,
         'message': '成功',
     });
+});
 
 //將模組匯出到router
 module.exports = router;

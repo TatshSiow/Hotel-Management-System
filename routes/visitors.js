@@ -38,18 +38,16 @@ router.post('/submit', async function(req, res, next) {
   const { IDCARD } = req.body;
   const { VROOM } = req.body;
 
-  const [rows, fields] = await mysql.execute('INSERT INTO `visitorsr` (VDATE,VNAME,IDCARD,VROOM) VALUES (?, ?, ?, ?)', [VDATE,VNAME,IDCARD,VROOM]);
+  const [rows, fields] = await mysql.execute('INSERT INTO `visitors` (VDATE,VNAME,IDCARD,VROOM) VALUES (?, ?, ?, ?)', [VDATE,VNAME,IDCARD,VROOM]);
    
     if (rows.affectedRows !== 1) {
-      throw new Error('寫入留言失敗');
+      throw new Error('寫入失敗');
     }
 
     
 
     // 查询 repair 表的内容
-    const [selectRepairRows, selectRepairFields] = await connection.execute(
-      'SELECT ID, VDATE,VNAME,IDCARD,VROOM FROM `visitorsr`'
-    );
+   
 
 
 /*把user裡面selectUserRows清零
