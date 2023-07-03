@@ -14,7 +14,7 @@ const Visitors = async () => {
         <br>
         <div class="card">
             <div class="card-header">
-                ${response.data[i].VID}
+                ${response.data[i].ID}
             </div>
             <div class="card-body">
                 <p class="card-text">${response.data[i].VDATE}</p>
