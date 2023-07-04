@@ -16,6 +16,7 @@ router.get('/', async function(req, res, next) {
 router.get('/fetch', async function(req, res, next) {
     const [rows,fields] = await mysql.execute(
         'SELECT * FROM visitors ORDER BY ID  DESC');
+
 //如果回傳值正確，則在rows中顯示資料    
     return res.status(200).json({
         'status': true,
@@ -30,47 +31,25 @@ router.post('/submit', async function(req, res, next) {
  
 
   // 使用 mysql.getConnection 获取数据库连接，并将其赋值给 connection 变量
- 
-
+  const connection = await mysql.getConnection();
+  try {
 
   const { VDATE } = req.body;
   const { VNAME } = req.body;
   const { IDCARD } = req.body;
   const { VROOM } = req.body;
-
+  
   const [rows, fields] = await mysql.execute('INSERT INTO `visitors` (VDATE,VNAME,IDCARD,VROOM) VALUES (?, ?, ?, ?)', [VDATE,VNAME,IDCARD,VROOM]);
-   
+
     if (rows.affectedRows !== 1) {
       throw new Error('寫入失敗');
     }
 
-    
-
-    // 查询 repair 表的内容
-   
-
-
-/*把user裡面selectUserRows清零
-用UserOriginAmount代表user.amount（資料庫中user的amount）
-如果userOriginAmount的值小於messagePrice的值（上面設定為1）
-則顯示error ‘餘額不足’ */
-   
-/*這裡會用update語法更新資料庫內的資料
-如果更新失敗，則會顯示error '更新使用者金額失敗'*/
- 
-
-/*等待連線，取得對應的值，這裡SQL的NOW是使用當前時間的意思*/
-   
-/*如果無法插入值，則會顯示error '寫入使用者紀錄失敗' */
-
-
-/*這一個部分是用於debug，如果回傳值為以上的失敗結果，則會顯示error的信息
-並且回到失敗之前的狀態（rollback）*/
         await connection.commit();
     } catch (e) {
         await connection.rollback();
         return res.status(500).json({
-        'status': flase,
+        'status': false,
         'message': e.message,
         });
     }
@@ -79,6 +58,7 @@ router.post('/submit', async function(req, res, next) {
         'status': true,
         'message': '成功',
     });
+});
 
 //將模組匯出到router
 module.exports = router;

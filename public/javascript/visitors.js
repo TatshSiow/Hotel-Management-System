@@ -6,7 +6,7 @@ const reloadVisitors = async () => {
     });
 
     //清空messageList
-    let visitors = ''; 
+    let visitorsList = ''; 
 
     //for迴圈，在每次回圈中，從node資料庫裡面得到資料（response.data=回應資料，[i]=筆數，其餘的是SQL內資料的欄位）
     for (let i = 0; i < response.data.length ; i++) { 
@@ -56,9 +56,9 @@ fetch 用來發送網路請求的函式，
 
 //如果回應值有東西，會刷新message，若無將會提示
   if (response.status) {
-    reloadMessage();
+    reloadVisitors();
   } else {
-    alert(response.message);
+    alert(response.Visitors);
   }
 };
 

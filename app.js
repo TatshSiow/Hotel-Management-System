@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var messageRouter = require('./routes/message');
 var itemlistRouter = require('./routes/itemlist');
-
+var visitorsRouter = require('./routes/visitors');
 // 用express建立app，使用dotenv進行設定
 var app = express();
 require('dotenv').config();
@@ -31,7 +31,7 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/message', messageRouter);
 app.use('/itemlist', itemlistRouter);
-
+app.use('/visitors', visitorsRouter);
 // 抓取404錯誤（找不到網頁） 並回傳到error handler（錯誤中心）
 app.use(function(req, res, next) {
   next(createError(404));
