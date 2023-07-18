@@ -1,3 +1,23 @@
 {% extends 'layout.twig' %}
 {% block body %}
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    }
+</style>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+<div class="button-container">
+    <p><a type="button" class="btn btn-outline-primary btn-lg" href="/itemlist"><i class="bi bi-people"></i> 房客資料</a></p>
+    <p><a type="button" class="btn btn-outline-danger btn-lg" href="/message"><i class="bi bi-tools"></i> 報修中心</a></p>
+    <p><a type="button" class="btn btn-outline-warning btn-lg" href="visitors"><i class="bi bi-pass"></i> 房客登記</a></p>
+    <p><a type="button" class="btn btn-outline-success btn-lg" href="/user"><i class="bi bi-person-fill-gear"></i> 會員</a></p>
+</div>
+
 {% endblock %}
