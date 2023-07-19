@@ -18,8 +18,9 @@
                     <td>{{row['itemcode']}}</td>
                     <td>{{row['price']}}</td>
                     <td>{{row['quantity']}}</td>
-                    <td><button type="button" id="edit-itemlist-{{row['id']}}" class="btn btn-outline-secondary btn-sm">Edit</button><td>
-                </tr>
+                    <td><button type="button" id="delete-itemlist-{{row['id']}}" 
+                        class="btn btn-outline-danger btn-sm delete-item-button" data-itemid="{{row['id']}}">刪除</button>
+                    </td>
                 {% endfor %}
             </tbody>
         </table>
