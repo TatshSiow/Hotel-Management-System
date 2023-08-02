@@ -1,6 +1,42 @@
 {% extends 'layout.twig' %}
 {% block body %}
-    <div class="col-sm-9">
+  <h1>房客中心</h1>
+        <div class="d-flex justify-content-start w-100">
+            <div class="card col-md-4 w-100" style="width: 50%;">
+                <div class="card-header">登記</div>
+                
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                            </div>
+                            <br>
+
+                             <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message">
+                                <label for="itemcode" class="form-label">房號</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message">
+                                <label for="quantity" class="form-label">名子</label>
+                            </div>
+                            
+                            <br>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="price" name="price" placeholder="message">
+                                <label for="price" class="form-label">聯絡</label>
+                            </div>
+                            <br>
+        
+                            <button type="submit" id="submit-itemlist" class="btn btn-primary">回報</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <div id="itemlist-list"><div>
+    <script src="/javascript/itemlist.js"></script>
+{#     <div class="col-sm-9">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -8,7 +44,7 @@
                     <th>房號</th>
                     <th>名字</th>
                     <th>聯絡</th>
-                    <th> </th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -18,12 +54,12 @@
                     <td>{{row['itemcode']}}</td>
                     <td>{{row['price']}}</td>
                     <td>{{row['quantity']}}</td>
-                    <td><button type="button" id="delete-itemlist-{{row['id']}}" 
-                        class="btn btn-outline-danger btn-sm delete-item-button" data-itemid="{{row['id']}}">刪除</button>
+                    
                     </td>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    <div id="itemlist"><div>
+    <div id="itemlist"><div> #}
+
 {% endblock %}

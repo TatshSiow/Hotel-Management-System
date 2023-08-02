@@ -1,3 +1,4 @@
+//message刷新，然後用GET來取得資料，async操作的情況下等待回傳值
 const reloadVisitors = async () => {
     const response = await fetch('/visitors/fetch', {
         method: 'GET'
@@ -5,27 +6,8 @@ const reloadVisitors = async () => {
         return await res.json();
     });
 
-    //清空messageList
-    let visitorsList = ''; 
-
-    //for迴圈，在每次回圈中，從node資料庫裡面得到資料（response.data=回應資料，[i]=筆數，其餘的是SQL內資料的欄位）
-    for (let i = 0; i < response.data.length ; i++) { 
-       visitorsList += `
-        <br>
-        <div class="card">
-            <div class="card-header">
-                ${response.data[i].ID}
-            </div>
-            <div class="card-body">
-                <p class="card-text">${response.data[i].VDATE}</p>
-                <p class="card-text">${response.data[i].VNAME}</p>
-                <p class="card-text">${response.data[i].IDCARD}</p>
-                <p class="card-text">${response.data[i].VROOM}</p>
-            </div>
-        </div>`;
-    }
-//將 messageList 的內容寫入 HTML中 id 屬性為 message-list 的元素中
-    document.querySelector('#visitors-list').innerHTML = visitorsList;
+//將 visitors的內容寫入 HTML中 id 屬性為 visitors-list 的元素中
+    document.querySelector('#visitors').innerHTML = visitorsList;
 };
 
 //如果我在頁面點了submit按鈕，我的資料會回傳到資料庫
@@ -35,6 +17,15 @@ const submitvisitors = async () => {
   const IDCARD = document.getElementById('IDCARD').value;
   const VROOM = document.getElementById('VROOM').value;
 
+//如果回應值有東西，會刷新message，若無將會提示
+
+ if (response.status) {
+    reloaditemlist();
+  } else {
+    alert(response.itemlist);
+  }
+};
+
 /* 向 /message/submit 發送 POST 請求
 將 message 轉換成 string
 fetch 用來發送網路請求的函式，
@@ -42,28 +33,29 @@ fetch 用來發送網路請求的函式，
 當伺服器回應時，使用 res.json() 方法將回應的內容解析為 JSON 格式
 並將其儲存在 response 變數中，最後回傳 response 變數的值。
 設定 content-type 為 application/json，表示請求的內容是 JSON 格式。*/
-  const response = await fetch('/visitors/submit', {
-    method: 'POST',
-    body: JSON.stringify({ VDATE,VNAME,IDCARD,VROOM }),
-    headers: {
-      'content-type': 'application/json',
-      'content-type': 'application/json',
-    },
-  })
-  .then(async (res) => {
-    return await res.json();
-  });
 
-//如果回應值有東西，會刷新message，若無將會提示
-  if (response.status) {
-    reloadVisitors();
-  } else {
-    alert(response.Visitors);
-  }
-};
+//   const response = await fetch('/visitors/submit', {
+//     method: 'POST',
+//     body: JSON.stringify({ VDATE,VNAME,IDCARD,VROOM }),
+//     headers: {
+//       'content-type': 'application/json',
+//       'content-type': 'application/json',
+//     },
+//   })
+//   .then(async (res) => {
+//     return await res.json();
+//   });
 
-//添加submit-message的指令，eventListener是待命操作（click是用戶操作，submitmessage是系統動作）
-document.getElementById('submit-visitors').addEventListener('click', submitvisitors);
+// //如果回應值有東西，會刷新message，若無將會提示
+//   if (response.status) {
+//     reloadVisitors();
+//   } else {
+//     alert(response.Visitors);
+//   }
+// };
+
+// //添加submit-message的指令，eventListener是待命操作（click是用戶操作，submitmessage是系統動作）
+// document.getElementById('submit-visitors').addEventListener('click', submitvisitors);
 
 //刷新message
 reloadVisitors();

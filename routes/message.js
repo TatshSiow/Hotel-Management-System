@@ -7,6 +7,8 @@ var router = express.Router();
 
 /*從router GET 主目錄index頁面，
 讀取user的cookie，如果有則會回傳message/index的頁面*/
+
+//從router取得資料並暫存在/fetch，在SQL中下達以下指令
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
   return res.render('message/index', { title: '大樓管理', user });
@@ -23,6 +25,7 @@ router.get('/fetch', async function(req, res, next) {
         'data': rows,
     });
 });
+
 
 /*router用POST讀取submit，並讀取網頁中message欄位的資料
 這裡的messagePrice=1是指會在user裡面的amount -1的值*/

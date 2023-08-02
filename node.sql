@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `itemlist`;
 CREATE TABLE IF NOT EXISTS `itemlist` (
-  `id` int NOT NULL,
+  `id` int NOT NULL  AUTO_INCREMENT,
   `itemcode` varchar(5) NOT NULL,
-  `quantity` int NOT NULL,
+  `quantity` varchar(50) NOT NULL,
   `price` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `itemlist` (
 --
 
 INSERT INTO `itemlist` (`id`, `itemcode`, `quantity`, `price`) VALUES
-(1, '12', 123, 1234),
-(2, '123', 1412, 1);
+(1, '12', '123', 1234),
+(2, '123', '1412', 1);
 
 -- --------------------------------------------------------
 
