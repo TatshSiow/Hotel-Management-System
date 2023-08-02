@@ -7,7 +7,6 @@ var router = express.Router();
 
 /*從router GET 主目錄index頁面，
 讀取user的cookie，如果有則會回傳message/index的頁面*/
-
 //從router取得資料並暫存在/fetch，在SQL中下達以下指令
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
@@ -15,7 +14,7 @@ router.get('/', async function(req, res, next) {
 });
 
 //從router取得資料並暫存在/fetch，在SQL中下達以下指令
-router.get('/fetch', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
     const [rows,fields] = await mysql.execute(
         'SELECT * FROM repair ORDER BY ID DESC');
 
@@ -25,14 +24,11 @@ router.get('/fetch', async function(req, res, next) {
         'data': rows,
     });
 });
-
-
 /*router用POST讀取submit，並讀取網頁中message欄位的資料
 這裡的messagePrice=1是指會在user裡面的amount -1的值*/
 router.post('/submit', async function(req, res, next) {
   //
  
-
   // 使用 mysql.getConnection 获取数据库连接，并将其赋值给 connection 变量
   const connection = await mysql.getConnection();
   try {
@@ -44,7 +40,6 @@ router.post('/submit', async function(req, res, next) {
   const { PROBLEM } = req.body;
 
   const [rows, fields] = await mysql.execute('INSERT INTO `repair` (ROOM,REPORTDATE,DEVICE,PROBLEM) VALUES (?, ?, ?, ?)', [ROOM, REPORTDATE, DEVICE, PROBLEM]);
-   
     if (rows.affectedRows !== 1) {
       throw new Error('寫入留言失敗');
     }
@@ -53,7 +48,7 @@ router.post('/submit', async function(req, res, next) {
 
     // 查询 repair 表的内容
     const [selectRepairRows, selectRepairFields] = await connection.execute(
-      'SELECT ID, ROOM, REPORTDATE, DEVICEPROBLEM FROM `repair`'
+      'SELECT * FROM `itemlist`'
     );
 
 
