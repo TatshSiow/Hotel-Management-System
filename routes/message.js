@@ -14,7 +14,7 @@ router.get('/', async function(req, res, next) {
 });
 
 //從router取得資料並暫存在/fetch，在SQL中下達以下指令
-router.get('/', async function(req, res, next) {
+router.get('/fetch', async function(req, res, next) {
     const [rows,fields] = await mysql.execute(
         'SELECT * FROM repair ORDER BY ID DESC');
 
