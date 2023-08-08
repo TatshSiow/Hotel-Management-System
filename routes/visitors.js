@@ -24,6 +24,7 @@ router.get('/', async function(req, res, next) {
   return res.status(200).render('visitors/index', { user, title: 'visitors', rows });
 });
 
+
 /*router用POST讀取submit，並讀取網頁中message欄位的資料
 這裡的messagePrice=1是指會在user裡面的amount -1的值*/
 
