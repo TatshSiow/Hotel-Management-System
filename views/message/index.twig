@@ -1,10 +1,10 @@
 {% extends 'layout.twig' %}
 {% block body %}
-  <h1>報修中心</h1>
-        <div class="d-flex justify-content-start w-100">
-            <div class="card col-md-4 w-100" style="width: 50%;">
-                <div class="card-header">報修</div>
-                
+<h1>報修中心</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">報修</div>                
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
@@ -13,18 +13,14 @@
                                 <label for="ROOM" class="form-label">房號</label>
                             </div>
                             <br>
-
                              <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="REPORTDATE" name="REPORTDATE" placeholder="message">
                                 <label for="REPORTDATE" class="form-label">故障時間</label>
-                            </div>
-                          
+                            </div>  
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="DEVICE" name="DEVICE" placeholder="message">
                                 <label for="DEVICE" class="form-label">故障設備</label>
                             </div>
-                            <br>
-
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="PROBLEM" name="PROBLEM" placeholder="message">
                                 <label for="PROBLEM" class="form-label">故障情況</label>
@@ -37,6 +33,9 @@
                 </div>
             </div>
         </div>
-    <div id="message-list"><div>
+        <div class="col-8">
+            <div id="message-list"></div>
+        </div>
+    </div>
     <script src="/javascript/message.js"></script>
 {% endblock %}

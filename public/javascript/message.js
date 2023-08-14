@@ -12,18 +12,18 @@ const reloadMessage = async () => {
     //for迴圈，在每次回圈中，從node資料庫裡面得到資料（response.data=回應資料，[i]=筆數，其餘的是SQL內資料的欄位）
     for (let i = 0; i < response.data.length ; i++) { 
         messageList += `
-        <br>
         <div class="card">
             <div class="card-header">
-                ${response.data[i].ID}
+                事件編號：${response.data[i].ID}
             </div>
             <div class="card-body">
-                <p class="card-text">${response.data[i].ROOM}</p>
-                <p class="card-text">${response.data[i].REPORTDATE}</p>
-                <p class="card-text">${response.data[i].DEVICE}</p>
-                <p class="card-text">${response.data[i].PROBLEM}</p>
+                <p class="card-text">回報房號：${response.data[i].ROOM}</p>
+                <p class="card-text">回報日期：${response.data[i].REPORTDATE}</p>
+                <p class="card-text">回報設備：${response.data[i].DEVICE}</p>
+                <p class="card-text">回報問題：${response.data[i].PROBLEM}</p>
             </div>
-        </div>`;
+        </div>
+        <br>`;
     }
 //將 messageList 的內容寫入 HTML中 id 屬性為 message-list 的元素中
     document.querySelector('#message-list').innerHTML = messageList;

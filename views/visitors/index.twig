@@ -1,27 +1,23 @@
 {% extends 'layout.twig' %}
 {% block body %}
-      <h1>訪客登記</h1>
-        <div class="d-flex justify-content-start w-100">
-            <div class="card col-md-4 w-100" style="width: 50%;">
-                <div class="card-header">登記</div>
-                
+<h1>訪客資料管理</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">訪客登記</div>
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <div class="form-floating mb-3">
-                            </div>
+                            <div class="form-floating mb-3"></div>
                             <br>
-
-                             <div class="form-floating mb-3">
+                            <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="VDATE" name="VDATE" placeholder="message">
                                 <label for="VDATE" class="form-label">拜訪時間</label>
-                            </div>
-                          
+                            </div>    
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="VNAME" name="VNAME" placeholder="message">
                                 <label for="VNAME" class="form-label">名字</label>
                             </div>
-                            <br>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="IDCARD" name="IDCARD" placeholder="message">
                                 <label for="IDCARD" class="form-label">身分證</label>
@@ -31,41 +27,46 @@
                                 <label for="VROOM" class="form-label">拜訪房號</label>
                             </div>
                             <br>
-        
                             <button type="submit" id="submit-message" class="btn btn-primary">回報</button>
                         </div>
                     </form>
                 </div>
+            </div> 
+        </div>
+
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">訪客列表</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>拜訪時間</th>
+                                <th>名字</th>
+                                <th>身分證</th>
+                                <th>拜訪房號</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in rows %}
+                        <tr>
+                            <td>{{row['ID']}}</td>
+                            <td>{{row['VDATE']}}</td>
+                            <td>{{row['VNAME']}}</td>
+                            <td>{{row['IDCARD']}}</td>
+                            <td>{{row['VROOM']}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    <div id="visitors-list"><div>
-    <script src="/javascript/visitors.js"></script>
-    <div class="col-sm-9">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>拜訪時間</th>
-                    <th>名字</th>
-                    <th>身分證</th>
-                    <th>拜訪房號</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in rows %}
-                <tr>
-                    <td>{{row['ID']}}</td>
-                    <td>{{row['VDATE']}}</td>
-                    <td>{{row['VNAME']}}</td>
-                    <td>{{row['IDCARD']}}</td>
-                    <td>{{row['VROOM']}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
     </div>
     <div id="visitors"><div>
 
+<script src="/javascript/visitors.js"></script>
 <script>
     // 取得當前網路時間
     let now = new Date();

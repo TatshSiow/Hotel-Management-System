@@ -1,63 +1,63 @@
 {% extends 'layout.twig' %}
 {% block body %}
-<h1>房客中心</h1>
-<div class="d-flex justify-content-start w-100">
-    <div class="card col-md-4 w-100" style="width: 50%;">
-        <div class="card-header">登記</div>
-        
-        <div class="card-body">
-            <form>
-                <div class="mb-3">
-                    <div class="form-floating mb-3">
-                    </div>
-                    <br>
-
-                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message">
-                        <label for="itemcode" class="form-label">房號</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message">
-                        <label for="quantity" class="form-label">名字</label>
-                    </div>
-                    
-                    <br>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="price" name="price" placeholder="message">
-                        <label for="price" class="form-label">聯絡</label>
-                    </div>
-                    <br>
-
-                    <button type="submit" id="submit-itemlist" class="btn btn-primary">回報</button>
+<h1>房客資料管理</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">登記</div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3"></div>
+                            <br>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message">
+                                <label for="itemcode" class="form-label">房號</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message">
+                                <label for="quantity" class="form-label">名字</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="price" name="price" placeholder="message">
+                                <label for="price" class="form-label">聯絡</label>
+                            </div>
+                            <br>
+                            <button type="submit" id="submit-itemlist" class="btn btn-primary">回報</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">房客列表</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>房號</th>
+                                <th>名字</th>
+                                <th>聯絡</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in rows %}
+                            <tr>
+                                <td>{{row['id']}}</td>
+                                <td>{{row['itemcode']}}</td>
+                                <td>{{row['price']}}</td>
+                                <td>{{row['quantity']}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<div class="col-sm-9">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>房號</th>
-                <th>名字</th>
-                <th>聯絡</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in rows %}
-            <tr>
-                <td>{{row['id']}}</td>
-                <td>{{row['itemcode']}}</td>
-                <td>{{row['price']}}</td>
-                <td>{{row['quantity']}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-<div id="itemlist-list"><div>
+<div id="itemlist-list"></div>
 <script src="/javascript/itemlist.js"></script>
 {% endblock %}
