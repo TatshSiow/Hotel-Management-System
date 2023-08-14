@@ -11,12 +11,12 @@
                             <div class="form-floating mb-3"></div>
                             <br>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message">
-                                <label for="itemcode" class="form-label">房號</label>
+                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message">
+                                <label for="quantity" class="form-label">房號</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message">
-                                <label for="quantity" class="form-label">名字</label>
+                                <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message">
+                                <label for="itemcode" class="form-label">名字</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="price" name="price" placeholder="message">
@@ -46,9 +46,9 @@
                             {% for row in rows %}
                             <tr>
                                 <td>{{row['id']}}</td>
+                                <td>{{row['quantity']}}</td>
                                 <td>{{row['itemcode']}}</td>
                                 <td>{{row['price']}}</td>
-                                <td>{{row['quantity']}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

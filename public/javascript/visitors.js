@@ -1,6 +1,6 @@
 //message刷新，然後用GET來取得資料，async操作的情況下等待回傳值
 const reloadVisitors = async () => {
-    const response = await fetch('/visitors/fetch', {
+    const response = await fetch('/visitors', {
         method: 'GET'
     }).then(async (res) => {
         return await res.json();
@@ -20,9 +20,9 @@ const submitvisitors = async () => {
 //如果回應值有東西，會刷新message，若無將會提示
 
  if (response.status) {
-    reloaditemlist();
+    reloadVisitors();
   } else {
-    alert(response.itemlist);
+    alert(response.Visitors);
   }
 };
 
@@ -34,28 +34,27 @@ fetch 用來發送網路請求的函式，
 並將其儲存在 response 變數中，最後回傳 response 變數的值。
 設定 content-type 為 application/json，表示請求的內容是 JSON 格式。*/
 
-//   const response = await fetch('/visitors/submit', {
-//     method: 'POST',
-//     body: JSON.stringify({ VDATE,VNAME,IDCARD,VROOM }),
-//     headers: {
-//       'content-type': 'application/json',
-//       'content-type': 'application/json',
-//     },
-//   })
-//   .then(async (res) => {
-//     return await res.json();
-//   });
+  const response = await fetch('/visitors/submit', {
+    method: 'POST',
+    body: JSON.stringify({ VDATE,VNAME,IDCARD,VROOM }),
+    headers: {
+      'content-type': 'application/json',
+      'content-type': 'application/json',
+    },
+  })
+  .then(async (res) => {
+    return await res.json();
+  });
 
 // //如果回應值有東西，會刷新message，若無將會提示
-//   if (response.status) {
-//     reloadVisitors();
-//   } else {
-//     alert(response.Visitors);
-//   }
-// };
+  if (response.status) {
+    reloadVisitors();
+  } else {
+    alert(response.Visitors);
+  };
 
-// //添加submit-message的指令，eventListener是待命操作（click是用戶操作，submitmessage是系統動作）
-// document.getElementById('submit-visitors').addEventListener('click', submitvisitors);
+//添加submit-message的指令，eventListener是待命操作（click是用戶操作，submitmessage是系統動作）
+document.getElementById('submit-visitors').addEventListener('click', submitvisitors);
 
 //刷新message
 reloadVisitors();
