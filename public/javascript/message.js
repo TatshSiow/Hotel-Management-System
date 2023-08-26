@@ -35,7 +35,11 @@ const submitMessage = async () => {
   const REPORTDATE = document.getElementById('REPORTDATE').value;
   const DEVICE = document.getElementById('DEVICE').value;
   const PROBLEM = document.getElementById('PROBLEM').value;
- 
+
+  if (!ROOM || !REPORTDATE || !DEVICE || !PROBLEM) {
+    alert('請填寫完整資料！');
+    return;
+  }
 
 /* 向 /message/submit 發送 POST 請求
 將 message 轉換成 string

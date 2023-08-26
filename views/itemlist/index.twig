@@ -40,6 +40,7 @@
                                 <th>房號</th>
                                 <th>名字</th>
                                 <th>聯絡</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,7 @@
                                 <td>{{row['quantity']}}</td>
                                 <td>{{row['itemcode']}}</td>
                                 <td>{{row['price']}}</td>
+                                <td><button type="submit" id="submit-itemlist" class="btn btn-primary">刪除</button></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -60,4 +62,5 @@
 </div>
 <div id="itemlist-list"></div>
 <script src="/javascript/itemlist.js"></script>
+
 {% endblock %}

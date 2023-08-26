@@ -5,6 +5,10 @@ const login = async () => {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
+  if (!username || !password) {
+    alert('請填寫完整資料！');
+    return;
+  }
 /*如果response值是有的話，則會前往/user/login的網頁
 前往方式使用POST，body會用JSON內建的Stringify功能，這個功能可以將所有值轉為字串
 headers=標頭，'content-type': 'application/json'這行是代表使用json內件程式的功能
@@ -23,7 +27,7 @@ headers=標頭，'content-type': 'application/json'這行是代表使用json內�
 
 //如果有response值，將會帶到/user，若無則會提示
   if (response.status) {
-    location = '/user';
+    location = '/';
   } else {
     alert(response.message);
   }

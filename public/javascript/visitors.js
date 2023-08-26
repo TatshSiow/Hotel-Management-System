@@ -14,6 +14,11 @@ const submitVisitors = async () => {
   const IDCARD = document.getElementById('IDCARD').value;
   const VROOM = document.getElementById('VROOM').value;
 
+  if (!VDATE || !VNAME || !IDCARD || !VROOM) {
+    alert('請填寫完整資料！');
+    return;
+  }
+
   const response = await fetch('/visitors/submit', {
     method: 'POST',
     body: JSON.stringify({ VDATE, VNAME, IDCARD, VROOM }),
