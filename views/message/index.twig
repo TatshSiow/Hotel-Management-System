@@ -1,5 +1,6 @@
 {% extends 'layout.twig' %}
 {% block body %}
+<title>報修中心</title>
 <br><h1>報修中心</h1><br>
     <div class="row">
         <div class="col-4">
@@ -65,6 +66,6 @@
         document.getElementById("REPORTDATE").value = formattedDate;
     }
 
-    setInterval(refreshTime, 1000);
+    setInterval(refreshTime, 1);
 </script>
 {% endblock %}
