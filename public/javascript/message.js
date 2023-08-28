@@ -13,14 +13,26 @@ const reloadMessage = async () => {
     for (let i = 0; i < response.data.length ; i++) { 
         messageList += `
         <div class="card">
-            <div class="card-header">
-                事件編號：${response.data[i].ID}
+            <div class="card-header bg-secondary text-white h5">
+                <i class="bi bi-pin-angle"></i> 事件編號：${response.data[i].ID}
             </div>
             <div class="card-body">
-                <p class="card-text">回報房號：${response.data[i].ROOM}</p>
-                <p class="card-text">回報日期：${response.data[i].REPORTDATE}</p>
-                <p class="card-text">回報設備：${response.data[i].DEVICE}</p>
-                <p class="card-text">回報問題：${response.data[i].PROBLEM}</p>
+                <div class="row">
+                    <div class="col-8">
+                        <th>
+                            <p class="card-text">回報房號：${response.data[i].ROOM}</p>
+                            <p class="card-text">回報日期：${response.data[i].REPORTDATE}</p>
+                            <p class="card-text">回報設備：${response.data[i].DEVICE}</p>
+                            <p class="card-text">回報問題：${response.data[i].PROBLEM}</p>
+                        </th>
+                    </div>
+                    <div class="col-4">
+                        <th>
+                            <button type="submit" id="edit-itemlist" class="btn btn-primary">編輯</button>
+                            <button type="submit" id="delete-itemlist" class="btn btn-danger">刪除</button>
+                        </th>
+                    </div>
+                </div>
             </div>
         </div>
         <br>`;

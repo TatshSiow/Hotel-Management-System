@@ -7,15 +7,70 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 80vh;
+        height: 55vh;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
     }
 </style>
+<br>
+<div class="row justify-content-center">
+  <div class="col-3">
+    <div class="card d-flex align-items-center">
+      <div class="card-body text-center">
+        <h5 class="card-title">時間</h5>
+        <h6 class="card-subtitle mb-2 text-muted" id="time"></h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card d-flex align-items-center">
+      <div class="card-body text-center">
+        <h5 class="card-title">日期</h5>
+        <h6 class="card-subtitle mb-2 text-muted" id="date"></h6>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="button-container">
     <p><a type="button" class="btn btn-primary btn-lg" href="/itemlist"><i class="bi bi-people"></i> 房客資料管理</a></p>
+    <p><a type="button" class="btn btn-success  btn-lg" href="/visitors" style="color: white;"><i class="bi bi-person-badge"></i> 訪客資料管理</a></p>
     <p><a type="button" class="btn btn-danger btn-lg" href="/message"><i class="bi bi-tools"></i> 報修中心</a></p>
-	<p><a type="button" class="btn btn-warning btn-lg" href="/visitors" style="color: white;"><i class="bi bi-pass"></i> 訪客資料管理</a></p>
-    <p><a type="button" class="btn btn-success btn-lg" href="/user"><i class="bi bi-person-fill-gear"></i> 會員</a></p>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function refreshTime() {
+    // Get the current network time
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let date = now.getDate();
+    let hour = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    // Format the time and date strings
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    let formattedDate = year + "年" + month + "月" + date + "日";
+    let formattedTime = hour + ":" + minutes + ":" + seconds;
+
+    // Display the formatted time and date in the cards
+    document.getElementById('date').innerHTML = formattedDate;
+    document.getElementById('time').innerHTML = formattedTime;
+  }
+
+  setInterval(refreshTime, 1);
+});
+</script>
 {% endblock %}

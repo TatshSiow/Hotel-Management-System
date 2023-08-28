@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-4">
             <div class="card">
-                <div class="card-header">訪客登記</div>
+                <div class="card-header bg-primary text-white h5"><i class="bi bi-person-badge"></i> 訪客登記</div>
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
@@ -37,7 +37,7 @@
 
         <div class="col-8">
             <div class="card">
-                <div class="card-header">訪客列表</div>
+                <div class="card-header bg-secondary text-white h5"><i class="bi bi-person-badge-fill"></i> 訪客列表</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
@@ -47,6 +47,7 @@
                                 <th>名字</th>
                                 <th>身分證</th>
                                 <th>拜訪房號</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,6 +58,9 @@
                             <td>{{row['VNAME']}}</td>
                             <td>{{row['IDCARD']}}</td>
                             <td>{{row['VROOM']}}</td>
+                            <td><button type="submit" id="edit-itemlist" class="btn btn-primary">編輯</button>
+                                <button type="submit" id="delete-itemlist" class="btn btn-danger">刪除</button></td>
+
                         </tr>
                         {% endfor %}
                         </tbody>

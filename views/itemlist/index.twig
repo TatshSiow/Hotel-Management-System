@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-4">
             <div class="card">
-                <div class="card-header">登記</div>
+                <div class="card-header bg-primary text-white h5"><i class="bi bi-people"></i> 房客登記</div>
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
@@ -32,7 +32,7 @@
         </div>
         <div class="col-8">
             <div class="card">
-                <div class="card-header">房客列表</div>
+                <div class="card-header bg-secondary text-white h5"><i class="bi bi-people-fill"></i> 房客列表</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
@@ -51,7 +51,8 @@
                                 <td>{{row['quantity']}}</td>
                                 <td>{{row['itemcode']}}</td>
                                 <td>{{row['price']}}</td>
-                                <td><button type="submit" id="submit-itemlist" class="btn btn-primary">刪除</button></td>
+                                <td><button type="submit" id="edit-itemlist" class="btn btn-primary">編輯</button>
+                                    <button type="submit" id="delete-itemlist" class="btn btn-danger">刪除</button></td>
                             </tr>
                             {% endfor %}
                         </tbody>
