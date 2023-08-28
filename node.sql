@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Aug 14, 2023 at 04:38 PM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- 主機： 127.0.0.1:3306
+-- 產生時間： 2023 年 08 月 28 日 11:01
+-- 伺服器版本： 8.0.31
+-- PHP 版本： 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `node`
+-- 資料庫： `node`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `itemlist`
+-- 資料表結構 `itemlist`
 --
 
 DROP TABLE IF EXISTS `itemlist`;
@@ -34,24 +34,21 @@ CREATE TABLE IF NOT EXISTS `itemlist` (
   `quantity` int NOT NULL,
   `price` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `itemlist`
+-- 傾印資料表的資料 `itemlist`
 --
 
 INSERT INTO `itemlist` (`id`, `itemcode`, `quantity`, `price`) VALUES
-(1, '234', 234, '234'),
-(2, '123', 123, '123'),
-(3, '222', 0, '234'),
-(4, '黃阿毛', 512, '123456789'),
-(6, '朱三寶', 511, '1234567890'),
-(7, 'asd', 451, '012311415');
+(1, '測試名字1', 101, '1111111111'),
+(2, '測試名字2', 202, '2222222222'),
+(3, '測試名字3', 303, '3333333333');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `repair`
+-- 資料表結構 `repair`
 --
 
 DROP TABLE IF EXISTS `repair`;
@@ -62,21 +59,21 @@ CREATE TABLE IF NOT EXISTS `repair` (
   `DEVICE` varchar(50) NOT NULL,
   `PROBLEM` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `repair`
+-- 傾印資料表的資料 `repair`
 --
 
 INSERT INTO `repair` (`ID`, `ROOM`, `REPORTDATE`, `DEVICE`, `PROBLEM`) VALUES
-(24, '505', '2023-8-15 00:35:45', '冷氣機', ''),
-(25, '307', '2023-8-15 00:36:15', '熱水器', '無法啟用熱水'),
-(26, '141', '2023-8-15 00:37:39', '測試', '故障測試');
+(1, '101', '2023-8-28 18:59:04', '測試設備1', '故障情況1'),
+(2, '202', '2023-8-28 18:59:23', '測試設備2', '故障情況2'),
+(3, '303', '2023-8-28 18:59:33', '測試設備3', '故障情況3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 資料表結構 `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -91,27 +88,36 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `user`
+-- 傾印資料表的資料 `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `amount`) VALUES
-(1, 'test', '$argon2id$v=19$m=65536,t=3,p=4$mlOwYdvsbD1zXmko4v3t8g$KYrHu6OhLNvLULvwIaIGYkY7x/YzwUfUv2oD/pqH7RQ', 'test', 0);
+(1, 'test', '$argon2id$v=19$m=65536,t=3,p=4$t5QzHsKOYubB7vgow7ZXUg$qqpgMBpEyS857YsKNWcHoHtApqAMg1VMeRFV4Wx38kg', 'test', 500);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `visitors`
+-- 資料表結構 `visitors`
 --
 
 DROP TABLE IF EXISTS `visitors`;
 CREATE TABLE IF NOT EXISTS `visitors` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `VDATE` varchar(30) NOT NULL,
-  `VNAME` varchar(50) NOT NULL,
+  `VDATE` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `VNAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `IDCARD` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `VROOM` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `visitors`
+--
+
+INSERT INTO `visitors` (`ID`, `VDATE`, `VNAME`, `IDCARD`, `VROOM`) VALUES
+(1, '2023-8-28 19:00:08', '測試名字1', 'L111111111', '101'),
+(2, '2023-8-28 19:00:23', '測試名字2', 'L222222222', '202'),
+(3, '2023-8-28 19:00:39', '測試名字3', 'L333333333', '303');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
