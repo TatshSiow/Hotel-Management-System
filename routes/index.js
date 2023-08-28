@@ -5,7 +5,11 @@ var router = express.Router();
 
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
-  return res.render('index', {user, title: '大樓管理'});
+  if (user) {
+	return res.render('user/index', {user, title: '大樓管理系統'});
+	 } else {
+	return res.render('user/login', {user, title: '登入'});
+	}
 });
 
 

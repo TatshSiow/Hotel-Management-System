@@ -11,16 +11,16 @@
                             <div class="form-floating mb-3"></div>
                             <br>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message">
+                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="message" required oninvalid="this.setCustomValidity('請輸入房號')" oninput="this.setCustomValidity('')">
                                 <label for="quantity" class="form-label">房號</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message">
-                                <label for="itemcode" class="form-label">名字</label>
+                                <input type="text" class="form-control" id="itemcode" name="itemcode" placeholder="message" required oninvalid="this.setCustomValidity('請輸入名稱')" oninput="this.setCustomValidity('')">
+                                <label for="itemcode" class="form-label">名稱</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="price" name="price" placeholder="message">
-                                <label for="price" class="form-label">聯絡</label>
+                                <input type="text" class="form-control" id="price" name="price" placeholder="message" required oninvalid="this.setCustomValidity('請輸入聯絡號碼')" oninput="this.setCustomValidity('')">
+                                <label for="price" class="form-label">聯絡號碼</label>
                             </div>
                             <br>
                             <button type="submit" id="submit-itemlist" class="btn btn-primary">回報</button>

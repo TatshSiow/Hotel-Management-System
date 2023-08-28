@@ -37,7 +37,6 @@ const submitMessage = async () => {
   const PROBLEM = document.getElementById('PROBLEM').value;
 
   if (!ROOM || !REPORTDATE || !DEVICE || !PROBLEM) {
-    alert('請填寫完整資料！');
     return;
   }
 

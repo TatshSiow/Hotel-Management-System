@@ -14,15 +14,15 @@
                                 <label for="REPORTDATE" class="form-label" >故障時間</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="ROOM" name="ROOM" placeholder="message">
+                                <input type="text" class="form-control" id="ROOM" name="ROOM" placeholder="message" required oninvalid="this.setCustomValidity('請輸入房號')" oninput="this.setCustomValidity('')">
                                 <label for="ROOM" class="form-label">房號</label>
                             </div>  
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="DEVICE" name="DEVICE" placeholder="message">
+                                <input type="text" class="form-control" id="DEVICE" name="DEVICE" placeholder="message" required oninvalid="this.setCustomValidity('請輸入故障設備')" oninput="this.setCustomValidity('')">
                                 <label for="DEVICE" class="form-label">故障設備</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="PROBLEM" name="PROBLEM" placeholder="message">
+                                <input type="text" class="form-control" id="PROBLEM" name="PROBLEM" placeholder="message" required oninvalid="this.setCustomValidity('請描述故障情況')" oninput="this.setCustomValidity('')">
                                 <label for="PROBLEM" class="form-label">故障情況</label>
                             </div>
                             <br>

@@ -10,7 +10,11 @@ var router = express.Router();
 //從router取得資料並暫存在/fetch，在SQL中下達以下指令
 router.get('/', async function(req, res, next) {
   const { user } = req.signedCookies;
-  return res.render('message/index', { title: '大樓管理', user });
+  if (user) {
+  return res.render('message/index', {user, title: '報修中心'});
+   } else {
+  return res.render('user/login', {user, title: '登入'});
+  }
 });
 
 //從router取得資料並暫存在/fetch，在SQL中下達以下指令

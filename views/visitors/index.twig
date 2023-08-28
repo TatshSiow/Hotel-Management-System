@@ -15,15 +15,15 @@
                                 <label for="VDATE" class="form-label">拜訪時間</label>
                             </div>    
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="VNAME" name="VNAME" placeholder="message">
-                                <label for="VNAME" class="form-label">名字</label>
+                                <input type="text" class="form-control" id="VNAME" name="VNAME" placeholder="message" required oninvalid="this.setCustomValidity('請輸入訪客名稱')" oninput="this.setCustomValidity('')">
+                                <label for="VNAME" class="form-label">名稱</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="IDCARD" name="IDCARD" placeholder="message">
+                                <input type="text" class="form-control" id="IDCARD" name="IDCARD" placeholder="message" required oninvalid="this.setCustomValidity('請輸入訪客身份證號')" oninput="this.setCustomValidity('')">
                                 <label for="IDCARD" class="form-label">身分證</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="VROOM" name="VROOM" placeholder="message">
+                                <input type="text" class="form-control" id="VROOM" name="VROOM" placeholder="message" required oninvalid="this.setCustomValidity('請輸入拜訪房號')" oninput="this.setCustomValidity('')">
                                 <label for="VROOM" class="form-label">拜訪房號</label>
                             </div>
                             <br>

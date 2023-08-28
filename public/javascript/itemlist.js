@@ -15,7 +15,6 @@ const submitItemlist = async () => {
 
   // 检查表单字段是否为空
   if (!itemcode || !quantity || !price) {
-    alert('請填寫完整資料！');
     return;
   }
 

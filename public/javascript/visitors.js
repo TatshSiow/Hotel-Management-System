@@ -15,7 +15,6 @@ const submitVisitors = async () => {
   const VROOM = document.getElementById('VROOM').value;
 
   if (!VDATE || !VNAME || !IDCARD || !VROOM) {
-    alert('請填寫完整資料！');
     return;
   }
 
