@@ -4,6 +4,9 @@ var router = express.Router();
 
 router.get('/', async function(req, res, next) {
     const { user, userId } = req.signedCookies;
+    if (!user) {
+      return res.redirect('/user/login');
+    }
     const [rows,fields] = await mysql.execute(
         'SELECT * FROM visitors ORDER BY id ASC');
 

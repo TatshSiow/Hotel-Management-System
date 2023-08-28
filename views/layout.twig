@@ -2,22 +2,16 @@
 <html>
   <head>
     <title>大樓管理測試頁面</title>
-
-{# 如果想導入css，可以在這裡添加 #}
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Add your CSS stylesheets here -->
 
-{# 這個是bootstrap的鏈接方式，documentation裡面有教程，參照教材內的操作即可 #}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-
+    <!-- Add your Bootstrap CSS and JS links here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
-  {# body開始是網頁內顯示的所有東西 #}
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid container">
         <a class="navbar-brand" href="/">大樓管理</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,16 +19,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">主頁</a>
+            <li class="nav-item {% if activePage == 'index' %}active{% endif %}">
+              <a class="nav-link" href="/">主頁</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if activePage == 'itemlist' %}active{% endif %}">
               <a class="nav-link" href="/itemlist">房客資料管理</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if activePage == 'message' %}active{% endif %}">
               <a class="nav-link" href="/message">報修中心</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if activePage == 'visitors' %}active{% endif %}">
               <a class="nav-link" href="/visitors">訪客資料管理</a>
             </li>
             <li class="nav-item dropdown">
@@ -53,8 +47,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled">
-              </a>
+              <a class="nav-link disabled"></a>
             </li>
           </ul>
         </div>
