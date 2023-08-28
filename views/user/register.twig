@@ -18,11 +18,10 @@
     <div class="row h-100 align-items-center justify-content-center">
       <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
         <div class="bg-transparent rounded p-4 p-sm-5 my-4 mx-3">
-          <div class="d-flex align-items-center justify-content-between mb-3">
+          <div class="d-flex align-items-center justify-content-center mb-3">
             <div class="card col-12">
+              <div class="card-header bg-primary text-white h3 d-flex justify-content-center align-items-center">賬戶註冊</div>
               <div class="card-body">
-                <h1 class="card-title">賬戶註冊</h1>
-                <br>
                 <form action="/user/register" method="post">
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="username" name="username" placeholder="username" required oninvalid="this.setCustomValidity('請輸入賬戶ID')" oninput="this.setCustomValidity('')">
@@ -36,8 +35,10 @@
                     <input type="text" class="form-control" id="name" name="name" placeholder="name" required oninvalid="this.setCustomValidity('請輸入顯示名稱')" oninput="this.setCustomValidity('')">
                     <label for="name" class="form-label">顯示名稱</label>
                   </div>
-                  <button type="submit" class="btn btn-primary">註冊</button>
-                  <p class="mt-3">返回<a href="login">登入</a>頁面</p>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">註冊</button>
+                  </div>
+                  <p class="mt-3 text-center">返回<a href="/user/login">登入</a>頁面</p>
                 </form>
               </div>
             </div>
@@ -46,6 +47,5 @@
       </div>
     </div>
   </div>
-  {% endblock %}
-  </body>
+{% endblock %}
 </html>
