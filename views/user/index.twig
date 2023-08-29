@@ -7,43 +7,53 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 55vh;
+        height: 30vh;
     }
 
     .card-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .card-subtitle {
+        font-size: 1.25rem;
+    }
+    .btn-lg {
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+    }
+    .card {
+        width: 75%; /* Adjust the width as needed */
+        margin: 0 auto
     }
 </style>
-
+<br>
 <a class="weatherwidget-io" href="https://forecast7.com/zh-tw/24d16120d67/taichung/" data-label_1="台中市" data-label_2="天氣" data-font="Noto Sans TC" data-icons="Climacons Animated" >台中市 天氣</a>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
-
-<br>
-<div class="row justify-content-center">
-  <div class="col-3">
+<br><br>
+<div class="row">
+  <div class="col-6">
     <div class="card d-flex align-items-center">
       <div class="card-body text-center">
         <h5 class="card-title">時間</h5>
         <h6 class="card-subtitle mb-2 text-muted" id="time"></h6>
       </div>
     </div>
-  </div>
-  <div class="col-3">
-    <div class="card d-flex align-items-center">
+    <div class="card mt-3 d-flex align-items-center">
       <div class="card-body text-center">
         <h5 class="card-title">日期</h5>
         <h6 class="card-subtitle mb-2 text-muted" id="date"></h6>
       </div>
     </div>
   </div>
-</div>
-
-<div class="button-container">
-    <p><a type="button" class="btn btn-primary btn-lg" href="/itemlist"><i class="bi bi-people"></i> 房客資料管理</a></p>
-    <p><a type="button" class="btn btn-success  btn-lg" href="/visitors" style="color: white;"><i class="bi bi-person-badge"></i> 訪客資料管理</a></p>
-    <p><a type="button" class="btn btn-danger btn-lg" href="/message"><i class="bi bi-tools"></i> 報修中心</a></p>
+  <div class="col-6">
+    <div class="button-container">
+        <p><a type="button" class="btn btn-primary btn-lg" href="/itemlist"><i class="bi bi-people"></i> 房客資料管理</a></p>
+        <p><a type="button" class="btn btn-success  btn-lg" href="/visitors" style="color: white;"><i class="bi bi-person-badge"></i> 訪客資料管理</a></p>
+        <p><a type="button" class="btn btn-danger btn-lg" href="/message"><i class="bi bi-tools"></i> 報修中心</a></p>
+    </div>
+  </div>
 </div>
 
 <script>
