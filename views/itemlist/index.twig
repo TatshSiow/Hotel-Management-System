@@ -51,8 +51,8 @@
                                 <td>{{row['quantity']}}</td>
                                 <td>{{row['itemcode']}}</td>
                                 <td>{{row['price']}}</td>
-                                <td><button type="submit" id="edit-itemlist" class="btn btn-primary">編輯</button>
-                                    <button type="submit" id="delete-itemlist" class="btn btn-danger">刪除</button></td>
+                                <td><button type="edit" id="edit-itemlist" class="btn btn-primary">編輯</button>
+                                    <button type="delete" id="delete-itemlist" class="btn btn-danger" onclick="deleteItem({{row['id']}})">刪除</button></td>
                             </tr>
                             {% endfor %}
                         </tbody>
