@@ -36,6 +36,25 @@ const submitItemlist = async () => {
   }
 };
 
+const deleteItem = async (itemId) => {
+  const response = await fetch('/itemlist/delete', {
+    method: 'POST',
+    body: JSON.stringify({ id: itemId }), // 傳遞要刪除的項目的ID
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+    .then(async (res) => {
+      return await res.json();
+    });
+
+  if (response.status) {
+    reloaditemlist(); // 刪除成功後重新載入列表
+  } else {
+    alert(response.message);
+  }
+};
+
 document.getElementById('submit-itemlist').addEventListener('click', submitItemlist);
 
 reloaditemlist();

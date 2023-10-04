@@ -32,6 +32,10 @@
                     <label for="password" class="form-label">密碼</label>
                   </div>
                   <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="confirm password" required oninvalid="this.setCustomValidity('請確認密碼')" oninput="this.setCustomValidity('')">
+                    <label for="confirmPassword" class="form-label">確認密碼</label>
+                  </div>
+                  <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="name" name="name" placeholder="name" required oninvalid="this.setCustomValidity('請輸入顯示名稱')" oninput="this.setCustomValidity('')">
                     <label for="name" class="form-label">顯示名稱</label>
                   </div>
@@ -48,4 +52,21 @@
     </div>
   </div>
 {% endblock %}
+<script>
+  // Function to check if the passwords match
+  function checkPasswordMatch() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password != confirmPassword) {
+      document.getElementById("registerButton").disabled = true;
+    } else {
+      document.getElementById("registerButton").disabled = false;
+    }
+  }
+
+  // Add event listener to check password match on input change
+  document.getElementById("password").addEventListener("input", checkPasswordMatch);
+  document.getElementById("confirmPassword").addEventListener("input", checkPasswordMatch);
+</script>
 </html>
