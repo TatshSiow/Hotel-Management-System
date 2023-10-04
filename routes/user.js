@@ -74,13 +74,17 @@ router.get('/register', function(req, res, next) {
 req.body取得網頁中的username，password，name欄位作為需要的資料
 const hanshedpassword會用argon2模組加密用戶輸入的密碼*/
 router.post('/register', async function(req, res, next) {
-  const { username, password, name } = req.body;
+  const { username, password, name, confirmPassword } = req.body;
   const hashedPassword = await argon2.hash(password);
 
 /*如果成功的話將會在mysql執行以下指令
 會在user資料庫裡面添加username,password,name,amount的名字
 [？]代表用戶輸入的值，500是給予的amount*/
-  const [rows,fields] = await mysql.execute('INSERT INTO `user` (username, password, name, amount) VALUES (?, ?, ?, ?)', [username, hashedPassword, name, 500]);
+ if (password != confirmPassword) {
+    return res.render('user/register', { title: '註冊', error: '密碼必須符合' });
+  }
+
+  const [rows, fields] = await mysql.execute('INSERT INTO `user` (username, password, name, amount) VALUES (?, ?, ?, ?)', [username, hashedPassword, name, 500]);
 
 //如果rows裡面沒東西，則會顯示註冊失敗
   if(rows.affectedRows !== 1) {
