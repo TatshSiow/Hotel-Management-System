@@ -66,37 +66,41 @@ router.post('/login', async function(req, res, next) {
 });
 
 //router用GET指令取得user/register的頁面
+// GET請求：顯示註冊頁面
 router.get('/register', function(req, res, next) {
   res.render('user/register', { title: '註冊' });
 });
-
-/*router用POST方式取得register網頁
-req.body取得網頁中的username，password，name欄位作為需要的資料
-const hanshedpassword會用argon2模組加密用戶輸入的密碼*/
+  
+// POST請求：處理用戶註冊
 router.post('/register', async function(req, res, next) {
-  const { username, password, name, confirmPassword } = req.body;
+  const { username, password, confirmPassword, name } = req.body;
   const hashedPassword = await argon2.hash(password);
 
-/*如果成功的話將會在mysql執行以下指令
-會在user資料庫裡面添加username,password,name,amount的名字
-[？]代表用戶輸入的值，500是給予的amount*/
- if (password != confirmPassword) {
-    return res.render('user/register', { title: '註冊', error: '密碼必須符合' });
-  }
-
-  const [rows, fields] = await mysql.execute('INSERT INTO `user` (username, password, name, amount) VALUES (?, ?, ?, ?)', [username, hashedPassword, name, 500]);
-
-//如果rows裡面沒東西，則會顯示註冊失敗
-  if(rows.affectedRows !== 1) {
+  // 檢查密碼是否匹配
+  if (password !== confirmPassword) {
     return res.status(200).json({
       'status': false,
-      'message': '註冊失敗',
+      'message': '密碼和確認密碼不匹配',
     });
   }
 
-//否則會顯示註冊成功
+
+  // 如果密碼匹配，則進行數據庫插入操作
+  const [rows, fields] = await mysql.execute('INSERT INTO `user` (username, password, name, amount) VALUES (?, ?, ?, ?)', [username, hashedPassword, name, 500]);
+
+  
+  // 檢查插入是否成功
+  if (rows.affectedRows !== 1) {
+    return res.status(200).json({
+      'status': false,
+      'message': '註冊失败',
+    });
+  }
+
+  //則會顯示註冊成功
   return res.render('user/login');
 });
+
 
 //將模組匯出到router
 module.exports = router;
