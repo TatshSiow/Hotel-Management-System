@@ -1,14 +1,13 @@
 var express = require('express');
 var { promisePool: mysql } = require('../lib/mysql');
 var router = express.Router();
-const util = require('util'); // 引入util模塊
 
 router.get('/', async function(req, res, next) {
     const { user, userId } = req.signedCookies;
     if (!user) {
       return res.redirect('/user/login');
     }
-    const [rows,fields] = await mysql.execute(
+    const [rows, fields] = await mysql.execute(
         'SELECT * FROM itemlist ORDER BY id ASC');
 
   return res.status(200).render('itemlist/index', { user, title: 'itemlist', rows });
@@ -37,22 +36,20 @@ router.post('/submit', async function(req, res, next) {
   }
 });
 
-// 在這裡添加一個新的POST路由處理程序，用於刪除項目
 router.post('/delete', async function(req, res, next) {
-  const { id } = req.body; // 假設前端在請求中發送了要刪除的項目的ID
+  const { id } = req.body;
 
   try {
-    // 刪除項目的SQL語句
     const deleteQuery = 'DELETE FROM `itemlist` WHERE id = ?';
+    console.log('Delete SQL Query:', deleteQuery);
 
-    // 執行SQL語句
     const [deleteRows, deleteFields] = await mysql.execute(deleteQuery, [id]);
 
     if (deleteRows.affectedRows !== 1) {
       throw new Error('刪除失敗');
     }
 
-    // 成功刪除後，重新獲取剩餘的項目列表
+    // 如果需要重新加载整个列表，可以保留以下这部分
     const [selectitemlistRows, selectitemlistFields] = await mysql.execute('SELECT * FROM `itemlist`');
     
     return res.status(200).json({
@@ -61,10 +58,16 @@ router.post('/delete', async function(req, res, next) {
       data: selectitemlistRows,
     });
   } catch (e) {
+    console.error('Error deleting item:', e);
+    console.log('ID attempted to delete:', id); // 添加这一行
+    console.log('Erro r details:', e); // 添加这一行
+
+
     return res.status(500).json({
       status: false,
       message: e.message,
     });
   }
 });
+
 module.exports = router;

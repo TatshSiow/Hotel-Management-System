@@ -5,7 +5,7 @@ const reloaditemlist = async () => {
     return await res.json();
   });
 
-  document.querySelector('#itemlist-list').innerHTML = itemlistList;
+  document.querySelector('#itemlist-list').innerHTML = response;
 };
 
 const submitItemlist = async () => {
@@ -39,7 +39,7 @@ const submitItemlist = async () => {
 const deleteItem = async (itemId) => {
   const response = await fetch('/itemlist/delete', {
     method: 'POST',
-    body: JSON.stringify({ id: itemId }), // 傳遞要刪除的項目的ID
+    body: JSON.stringify({ id: itemId }), // 传递要删除的项的ID
     headers: {
       'content-type': 'application/json',
     },
@@ -48,13 +48,26 @@ const deleteItem = async (itemId) => {
       return await res.json();
     });
 
-  if (response.status) {
-    reloaditemlist(); // 刪除成功後重新載入列表
-  } else {
+    if (response.status) {
+    alert('刪除成功'); // 显示删除成功的 alert
+
+    // 1.5秒后刷新页面
+    setTimeout(() => {
+      window.location.reload(); // 刷新页面
+      }, 1500);
+    } else {
     alert(response.message);
   }
 };
 
 document.getElementById('submit-itemlist').addEventListener('click', submitItemlist);
+
+// 在按钮点击事件中获取data-id属性的值
+document.querySelectorAll('.btn-danger').forEach(button => {
+  button.addEventListener('click', function () {
+    const itemId = this.getAttribute('data-id'); // 获取按钮的data-id属性
+    deleteItem(itemId); // 调用删除函数
+  });
+});
 
 reloaditemlist();
