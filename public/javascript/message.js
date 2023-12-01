@@ -26,12 +26,6 @@ const reloadMessage = async () => {
                             <p class="card-text">回報問題：${response.data[i].PROBLEM}</p>
                         </th>
                     </div>
-                    <div class="col-4">
-                        <th>
-                            <button type="submit" id="edit-itemlist" class="btn btn-primary">編輯</button>
-                            <button type="submit" id="delete-itemlist" class="btn btn-danger">刪除</button>
-                        </th>
-                    </div>
                 </div>
             </div>
         </div>

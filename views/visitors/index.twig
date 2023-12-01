@@ -58,9 +58,7 @@
                             <td>{{row['VNAME']}}</td>
                             <td>{{row['IDCARD']}}</td>
                             <td>{{row['VROOM']}}</td>
-                            <td><button type="submit" id="edit-itemlist" class="btn btn-primary">編輯</button>
-                                <button type="submit" id="delete-itemlist" class="btn btn-danger">刪除</button></td>
-
+                            <td><button type="delete" data-id="{{row['ID']}}" class="btn btn-danger">刪除</button></td>
                         </tr>
                         {% endfor %}
                         </tbody>

@@ -35,4 +35,3 @@ headers=標頭，'content-type': 'application/json'這行是代表使用json內�
 
 //添加login的指令，eventListener是待命操作（click是用戶操作，login是系統動作）
 document.getElementById('login').addEventListener('click', login);
-

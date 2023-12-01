@@ -36,5 +36,39 @@ router.post('/submit', async function(req, res, next) {
   }
 });
 
+router.post('/delete', async function(req, res, next) {
+  const { ID } = req.body;
+
+  try {
+    const deleteQuery = 'DELETE FROM `visitors` WHERE id = ?';
+    console.log('Delete SQL Query:', deleteQuery);
+
+    const [deleteRows, deleteFields] = await mysql.execute(deleteQuery, [ID]);
+
+    if (deleteRows.affectedRows !== 1) {
+      throw new Error('刪除失敗');
+    }
+
+    // 如果需要重新加载整个列表，可以保留以下这部分
+    const [selectvisitorsRows, selectvisitorsFields] = await mysql.execute('SELECT * FROM `visitors`');
+    
+    return res.status(200).json({
+      status: true,
+      message: '刪除成功',
+      data: selectvisitorsRows,
+    });
+  } catch (e) {
+    console.error('Error deleting item:', e);
+    console.log('ID attempted to delete:', ID); // 添加这一行
+    console.log('Error details:', e); // 添加这一行
+
+
+    return res.status(500).json({
+      status: false,
+      message: e.message,
+    });
+  }
+});
+
 module.exports = router;
 
