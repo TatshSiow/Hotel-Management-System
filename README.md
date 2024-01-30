@@ -1,7 +1,7 @@
 # Introduction
 This is a project develop by a group of students(with the help of professors)\
 We aim to create a better management system to replace pen and paper based database\
-This can dramatically decrease ink and paper waste, further more it will be much easier to access using electronic devices
+This can dramatically decrease ink and paper waste, further more it will be much easier to access using electronic devices.\
 This project is powered using BootStrap5, Bootstrap Icons, Node.js, Dotenv, TWIG and MySQL.
 
 # What service can it provides?
