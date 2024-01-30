@@ -21,8 +21,15 @@ This dashboard also shows the time and date, just in case if the residents asked
 ## 3. Residents Data Management System
 ![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/2d817820-2a72-4f83-be4e-fc551adf3a9b)
 
-The place where you can store your resident datas, including Room ID, Name, Contact Number.\
+The place where you can store your residents' datas, including Room ID, Name, Contact Number.\
 You can add new datas by filling the form on the left side.\
 When submit success, it will show the data on the right panel.
 
-##
+## 4. Visitors Data Management System
+![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/07f69125-a7bb-484c-869e-bcd0458e792f)
+
+Collect visitors identity data before letting them go into their desired room!
+This can highly enhance the safety of the whole building/unit.
+We will collect their name, Identity Card Number, Visitor requested ROOM ID and automatically record the entry time (not editable entry time, to protect fake time records).
+
+## 5. 
