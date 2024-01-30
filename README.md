@@ -2,7 +2,7 @@
 This is a project develop by a group of students(with the help of professors)\
 We aim to create a better management system to replace pen and paper based database\
 This can dramatically decrease ink and paper waste, further more it will be much easier to access using electronic devices
-
+This project is powered using BootStrap5, Bootstrap Icons, Node.js, Dotenv, TWIG and MySQL.
 
 # What service can it provides?
 ## 1. Login/Register System
@@ -28,8 +28,15 @@ When submit success, it will show the data on the right panel.
 ## 4. Visitors Data Management System
 ![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/07f69125-a7bb-484c-869e-bcd0458e792f)
 
-Collect visitors identity data before letting them go into their desired room!
-This can highly enhance the safety of the whole building/unit.
+Collect visitors identity data before letting them go into their desired room!\
+This can highly enhance the safety of the whole building/unit.\
 We will collect their name, Identity Card Number, Visitor requested ROOM ID and automatically record the entry time (not editable entry time, to protect fake time records).
 
-## 5. 
+## 5. Repair Requesting System
+![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/0e232ea3-60cd-4296-96ff-1c6e911e30cc)
+
+As what the name says, it is a page to handle repair requested by residents.\
+it will record current time, Room ID, problematic devices and problem description.\
+This can prevent requests being forgotten and not handled at the right time.\
+Also, it will pin the latest problem at the top, older problems at the bottom.
+
