@@ -8,7 +8,7 @@ This project is powered using BootStrap5, Bootstrap Icons, Node.js, Dotenv, TWIG
 ## 1. Login/Register System
 ![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/1468832a-ac60-48d1-9905-ac1bda17a41a)
 
-We used Argon2 to encrypt our passwords， efficiently prevent from attackers, stealing database passwords to grant access
+We used Argon2 to encrypt our passwords, prevent attackers from stealing database passwords to grant access
 
 ## 2. Dashboard and Weather System
 ![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/9c5d195e-267d-46ca-916e-77c971a715c3)
