@@ -1,4 +1,4 @@
- # Introduction
+# Introduction
 This is a project develop by a group of students(with the help of professors)\
 We aim to create a better management system to replace pen and paper based database\
 This can dramatically decrease ink and paper waste, further more it will be much easier to access using electronic devices
@@ -14,6 +14,15 @@ We used Argon2 to encrypt our passwords， efficiently prevent from attackers, s
 ![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/9c5d195e-267d-46ca-916e-77c971a715c3)
 
 This is the page that greeted you after successful login.\
-The weather widget is aim to let counters (service center employees) to inform residents whether it is a rainy day or sunny day.
-Another thing is, the counter service can tell the residents to prepare an umbrella before going out.
+The weather widget is aim to let counters (service center employees) to inform residents whether it is a rainy day or sunny day.\
+Another thing is, the counter service can tell the residents to prepare an umbrella before going out.\
 This dashboard also shows the time and date, just in case if the residents asked.
+
+## 3. Residents Data Management System
+![image](https://github.com/TatshSiow/Hotel-Management-System/assets/100989709/2d817820-2a72-4f83-be4e-fc551adf3a9b)
+
+The place where you can store your resident datas, including Room ID, Name, Contact Number.\
+You can add new datas by filling the form on the left side.\
+When submit success, it will show the data on the right panel.
+
+##
